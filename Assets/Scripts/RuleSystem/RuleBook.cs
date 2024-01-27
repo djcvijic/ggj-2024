@@ -16,11 +16,11 @@ namespace RuleSystem
         }
 
         /// <summary>
-        /// Check if the joke with the selected index [1..56] is the correct one.
+        /// Check if the joke with the selected number [1..56] is the correct one.
         /// </summary>
-        /// <param name="jokeIndex"></param>
+        /// <param name="jokeNumber"></param>
         /// <returns></returns>
-        public bool IsCorrectJoke(int jokeIndex)
+        public bool IsCorrectJoke(int jokeNumber)
         {
             return false;
         }
