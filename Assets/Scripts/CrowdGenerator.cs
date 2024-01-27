@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RuleSystem;
 
 public class CrowdGenerator : MonoBehaviour
 {
     [SerializeField] private int startCatCount;
     [SerializeField] private Cat catPrefab;
-    [SerializeField] private List<Transform> catSeats;
+    [SerializeField] private List<Seat> catSeats;
     [SerializeField] private Transform crowd;
 
-    private Transform catPosition;
+    private Seat catSeat;
 
-    private List<Transform> usedCatPositions;
+    private List<Seat> usedCatSeats = new List<Seat>();
+
+    //for testing
+    private List<Cat> cats = new List<Cat>();
 
     private void Start()
     {
@@ -20,20 +24,52 @@ public class CrowdGenerator : MonoBehaviour
 
     private void GenerateCats()
     {
+        List<CatData> allCatsData = new List<CatData>();
+
         for (int i = 0; i < startCatCount; i++)
         {
             Cat cat = Instantiate(catPrefab, crowd);
 
-            catPosition = catSeats[Random.Range(0, catSeats.Count)];
+            catSeat = catSeats[Random.Range(0, catSeats.Count)];
 
-            while (usedCatPositions.Contains(catPosition))
+            while (usedCatSeats.Contains(catSeat))
             {
-                catPosition = catSeats[Random.Range(0, catSeats.Count)];
+                catSeat = catSeats[Random.Range(0, catSeats.Count)];
             }
 
-            usedCatPositions.Add(catPosition);
+            usedCatSeats.Add(catSeat);
 
-            cat.SetPosition(catPosition);
+            cat.SetSeat(catSeat);
+            cats.Add(cat);
+
+            allCatsData.Add(cat.GetCatData());
         }
+
+        RuleBook.Instance.Initialize(allCatsData);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TestGeneration();
+        }
+    }
+
+    private void TestGeneration()
+    {
+        usedCatSeats.Clear();
+
+        if (cats.Count > 0)
+        {
+            foreach (Cat existingCat in cats)
+            {
+                Destroy(existingCat.gameObject);
+            }
+        }
+
+        cats.Clear();
+
+        GenerateCats();
     }
 }
