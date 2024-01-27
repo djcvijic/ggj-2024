@@ -21,7 +21,7 @@ namespace RuleSystem
         }
 
         /// <summary>
-        /// Check if the joke with the selected number [1..56] is the correct one.
+        /// Check if the joke with the selected number [1..70] is the correct one.
         /// </summary>
         /// <param name="jokeNumber"></param>
         /// <returns></returns>

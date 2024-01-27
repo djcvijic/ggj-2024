@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 public class CrowdGenerator : MonoBehaviour
 {
-    [SerializeField] private int startCatCount;
     [SerializeField] private Cat catPrefab;
     [SerializeField] private List<Seat> catSeats;
     [SerializeField] private Transform crowd;
@@ -15,19 +14,18 @@ public class CrowdGenerator : MonoBehaviour
 
     private List<Seat> usedCatSeats = new List<Seat>();
 
-    // TODO get the day of week in gameplay
-    private DayOfWeek CurrentDayOfWeek => DateTime.Today.DayOfWeek;
-
-    private void Start()
+    public void GenerateCats(int catCount, DayOfWeek dayOfWeek)
     {
-        GenerateCats();
-    }
+        usedCatSeats.Clear();
 
-    private void GenerateCats()
-    {
+        foreach(Transform go in crowd.transform)
+        {
+            Destroy(go.gameObject);
+        }
+
         List<CatData> allCatsData = new List<CatData>();
 
-        for (int i = 0; i < startCatCount; i++)
+        for (int i = 0; i < catCount; i++)
         {
             Cat cat = Instantiate(catPrefab, crowd);
             cat.CreateCat();
@@ -45,7 +43,7 @@ public class CrowdGenerator : MonoBehaviour
             allCatsData.Add(cat.GetCatData());
         }
 
-        RuleBook.Instance.Initialize(new AudienceData(allCatsData, CurrentDayOfWeek));
+        RuleBook.Instance.Initialize(new AudienceData(allCatsData, dayOfWeek));
     }
 
     private void Update()
@@ -58,13 +56,6 @@ public class CrowdGenerator : MonoBehaviour
 
     private void TestGeneration()
     {
-        usedCatSeats.Clear();
-
-        foreach(Transform go in crowd.transform)
-        {
-            Destroy(go.gameObject);
-        }
-
-        GenerateCats();
+        GenerateCats(8, DateTime.Today.DayOfWeek);
     }
 }
