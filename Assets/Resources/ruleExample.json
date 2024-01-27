@@ -9,21 +9,21 @@
             "amount1": {
               "type": "PropertyCount",
               "propertyCount": {
-                "property": "Fitness",
+                "property": "Build",
                 "value": "Thin"
               }
             },
-            "operator": "Difference",
+            "operation": "Difference",
             "amount2": {
               "type": "PropertyCount",
               "propertyCount": {
-                "property": "Fitness",
-                "value": "Muscly"
+                "property": "Build",
+                "value": "Muscular"
               }
             }
           }
         },
-        "operator": "GreaterThan",
+        "operation": "GreaterThan",
         "amount2": {
           "type": "Number",
           "number": 5
@@ -48,7 +48,7 @@
       }
     }
   ],
-  "text": "",
+  "text": "Idu dva mrava i odose",
   "instruction": {
     "type": "TellJoke",
     "jokeNumber": 55
