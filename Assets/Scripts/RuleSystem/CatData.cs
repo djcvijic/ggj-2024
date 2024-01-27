@@ -27,5 +27,10 @@ namespace RuleSystem
             this.status = status;
             this.gender = gender;
         }
+
+        public bool PassesPropertyCheck(PropertyCheck propertyCheck)
+        {
+            return propertyCheck.Passes(color, build, age, status, gender);
+        }
     }
 }
