@@ -1759,14 +1759,14 @@
                   "type": "PropertyCount",
                   "propertyCount": {
                     "property": "Build",
-                    "value": "Skinny",
+                    "value": "Thin",
                     "secondaryCheck": {
                       "property": "Gender",
                       "value": "Female"
                     }
                   }
                 },
-                "operation": "MoreThan",
+                "operation": "GreaterThan",
                 "amount2": {
                   "type": "Number",
                   "number": 3
