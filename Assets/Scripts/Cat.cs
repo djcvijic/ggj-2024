@@ -22,6 +22,8 @@ public class Cat : MonoBehaviour
     private CatStatus catStatus;
     private CatGender catGender;
 
+    private Transform catPosition;
+
     private void Start()
     {
         CreateCat();
@@ -44,6 +46,12 @@ public class Cat : MonoBehaviour
         {
             gender.sprite = genders[(int)catAge];
         }
+    }
+
+    public void SetPosition(Transform catPosition)
+    {
+        this.catPosition = catPosition;
+        transform.position = catPosition.position;
     }
 
     T GetRandomEnumValue<T>()
