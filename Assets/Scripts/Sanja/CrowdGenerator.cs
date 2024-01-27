@@ -14,6 +14,8 @@ public class CrowdGenerator : MonoBehaviour
 
     private List<Seat> usedCatSeats = new List<Seat>();
 
+    public int MaxCatCount => catSeats.Count;
+
     public void GenerateCats(int catCount, DayOfWeek dayOfWeek)
     {
         usedCatSeats.Clear();
