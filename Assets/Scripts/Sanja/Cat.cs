@@ -35,7 +35,7 @@ public class Cat : MonoBehaviour
 
         color.sprite = colors[(int)catColor];
 
-        if (catBuild != CatBuild.Thin)
+        if (catBuild != CatBuild.Skinny)
         {
             build.sprite = catBuild == CatBuild.Fat ? builds[0] : builds[1];
         }

@@ -20,14 +20,14 @@ public enum CatColor
 public enum CatBuild
 {
     Fat,
-    Thin,
+    Skinny,
     Muscular
 }
 
 public enum CatAge
 {
     Boomer,
-    Millenial,
+    Millennial,
     Zoomer
 }
 
