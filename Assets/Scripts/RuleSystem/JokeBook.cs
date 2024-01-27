@@ -19,8 +19,8 @@ public class JokeBook : MonoBehaviour
     {
         _config ??= JsonConvert.DeserializeObject<JokeBookConfig>(Resources.Load<TextAsset>("jokeBook").text);
 
-        _closeBookButton.onClick.AddListener(CloseBook);
-        _tellJokeButton.onClick.AddListener(() => TellJoke(0));
+        _closeBookButton.onClick.SetListener(CloseBook);
+        _tellJokeButton.onClick.SetListener(() => TellJoke(0));
 
 
     }

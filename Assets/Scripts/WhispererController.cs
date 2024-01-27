@@ -28,20 +28,20 @@ public class WhispererController : MonoBehaviour
 
     void Start()
     {
-        backButton.onClick.AddListener(UnloadPage);
-        closeButton.onClick.AddListener(BackToMainMenu);
+        backButton.onClick.SetListener(UnloadPage);
+        closeButton.onClick.SetListener(BackToMainMenu);
 
         for(int i = 0; i < 14; i++)
         {
             GameObject pageSelection = Instantiate(pageSelectionPrefab, pageSelectionParent);
             int pageNumber = i + 1;
             pageSelection.GetComponentInChildren<TextMeshProUGUI>().text = i==0 ? pageNumber + ". " + "Rules for " + pageNumber + " cat" : pageNumber + ". " + "Rules for " + pageNumber + " cats";
-            pageSelection.GetComponent<Button>().onClick.AddListener(() => LoadPage(pageNumber));
+            pageSelection.GetComponent<Button>().onClick.SetListener(() => LoadPage(pageNumber));
         }
         GameObject tableOfContents = Instantiate(pageSelectionPrefab, pageSelectionParent);
         tableOfContents.GetComponentInChildren<TextMeshProUGUI>().text = "15. Table Of Contents";
         tableOfContents.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(128, 35, 17, 255);
-        tableOfContents.GetComponent<Button>().onClick.AddListener(() => LoadTableOfContentsPage());
+        tableOfContents.GetComponent<Button>().onClick.SetListener(() => LoadTableOfContentsPage());
     }
 
     private void LoadPage(int pageNumber)
