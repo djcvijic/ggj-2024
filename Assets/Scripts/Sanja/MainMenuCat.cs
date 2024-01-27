@@ -53,11 +53,6 @@ public class MainMenuCat : MonoBehaviour
         {
             gender.sprite = genders[(int)catAge];
         }
-
-        else if (catGender == CatGender.Schrodinger)
-        {
-            gender.sprite = genders[3];
-        }
     }
     T GetRandomEnumValue<T>()
     {
