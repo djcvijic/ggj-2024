@@ -1,7 +1,8 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using RuleSystem;
+using Random = UnityEngine.Random;
 
 public class CrowdGenerator : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class CrowdGenerator : MonoBehaviour
     private Seat catSeat;
 
     private List<Seat> usedCatSeats = new List<Seat>();
+
+
+    // TODO get the day of week in gameplay
+    private DayOfWeek CurrentDayOfWeek => DateTime.Today.DayOfWeek;
 
     private void Start()
     {
@@ -41,7 +46,7 @@ public class CrowdGenerator : MonoBehaviour
             allCatsData.Add(cat.GetCatData());
         }
 
-        RuleBook.Instance.Initialize(allCatsData);
+        RuleBook.Instance.Initialize(new AudienceData(allCatsData, CurrentDayOfWeek));
     }
 
     private void Update()
