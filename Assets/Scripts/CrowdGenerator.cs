@@ -7,26 +7,33 @@ public class CrowdGenerator : MonoBehaviour
     [SerializeField] private int startCatCount;
     [SerializeField] private Cat catPrefab;
     [SerializeField] private List<Transform> catSeats;
+    [SerializeField] private Transform crowd;
 
-    private Transform newCatPosition;
-    private Transform previousCatPosition;
+    private Transform catPosition;
+
+    private List<Transform> usedCatPositions;
+
+    private void Start()
+    {
+        GenerateCats();
+    }
 
     private void GenerateCats()
     {
         for (int i = 0; i < startCatCount; i++)
         {
-            Cat cat = Instantiate(catPrefab);
+            Cat cat = Instantiate(catPrefab, crowd);
 
-            newCatPosition = catSeats[Random.Range(0, catSeats.Count)];
+            catPosition = catSeats[Random.Range(0, catSeats.Count)];
 
-            while (newCatPosition == previousCatPosition)
+            while (usedCatPositions.Contains(catPosition))
             {
-                newCatPosition = catSeats[Random.Range(0, catSeats.Count)];
+                catPosition = catSeats[Random.Range(0, catSeats.Count)];
             }
 
-            previousCatPosition = newCatPosition;
+            usedCatPositions.Add(catPosition);
 
-            cat.transform.position = newCatPosition.position;
+            cat.SetPosition(catPosition);
         }
     }
 }
