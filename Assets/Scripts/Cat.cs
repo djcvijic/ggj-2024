@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RuleSystem;
 
 public class Cat : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class Cat : MonoBehaviour
 
     [SerializeField] private SpriteRenderer color;
     [SerializeField] private SpriteRenderer build;
-    [SerializeField] private SpriteRenderer status;
     [SerializeField] private SpriteRenderer age;
+    [SerializeField] private SpriteRenderer status;
     [SerializeField] private SpriteRenderer gender;
 
     private CatColor catColor;
@@ -22,7 +23,7 @@ public class Cat : MonoBehaviour
     private CatStatus catStatus;
     private CatGender catGender;
 
-    private Transform catPosition;
+    private Seat catSeat;
 
     private void Start()
     {
@@ -38,20 +39,41 @@ public class Cat : MonoBehaviour
         catGender = GetRandomEnumValue<CatGender>();
 
         color.sprite = colors[(int)catColor];
-        build.sprite = builds[(int)catBuild];
-        status.sprite = statuses[(int)catStatus];
+
+        if (catBuild != CatBuild.Thin)
+        {
+            build.sprite = catBuild == CatBuild.Fat ? builds[0] : builds[1];
+        }
+
         age.sprite = ages[(int)catAge];
+
+        if (catStatus != CatStatus.Outside)
+        {
+            status.sprite = catStatus == CatStatus.Inside ? statuses[0] : statuses[1];
+        }
         
         if (catGender == CatGender.Female)
         {
             gender.sprite = genders[(int)catAge];
         }
+
+        else if (catGender == CatGender.Schrodinger)
+        {
+            gender.sprite = genders[3];
+        }
     }
 
-    public void SetPosition(Transform catPosition)
+    public void SetSeat(Seat catSeat)
     {
-        this.catPosition = catPosition;
-        transform.position = catPosition.position;
+        this.catSeat = catSeat;
+        transform.position = catSeat.GetPosition;
+    }
+
+    public CatData GetCatData()
+    {
+        CatData catData = new CatData(catSeat.GetRowNumber, catSeat.GetSeatNumber, catColor, catBuild, catAge, catStatus, catGender);
+
+        return catData;
     }
 
     T GetRandomEnumValue<T>()
