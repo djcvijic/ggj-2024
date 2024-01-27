@@ -1,18 +1,24 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using UnityEngine;
 
 namespace RuleSystem
 {
     public class RuleBook : Singleton<RuleBook>
     {
-        private List<CatData> audienceData;
+        private RuleBookConfig _config;
+        private List<CatData> _audienceData;
+
+        private RuleBookConfig Config => _config ??=
+            JsonConvert.DeserializeObject<RuleBookConfig>(Resources.Load<TextAsset>("ruleBook").text);
 
         /// <summary>
         /// Call with data about each new audience at the start of each day.
         /// </summary>
-        /// <param name="newAudienceData"></param>
-        public void Initialize(List<CatData> newAudienceData)
+        /// <param name="audienceData"></param>
+        public void Initialize(List<CatData> audienceData)
         {
-            audienceData = newAudienceData;
+            _audienceData = audienceData;
         }
 
         /// <summary>
@@ -32,13 +38,10 @@ namespace RuleSystem
         /// <returns></returns>
         public PageText GetPageText(int pageNumber)
         {
-            return new PageText(new List<RuleText>
-            {
-                new("", new InstructionText("")), 
-                new("", new InstructionText("")),
-                new("", new InstructionText("")),
-                new("", new InstructionText(""))
-            }, new InstructionText(""));
+            var pageConfig = Config.pages[pageNumber - 1];
+            return new PageText(
+                pageConfig.rules.ConvertAll(x => new RuleText(x.text, new InstructionText(x.instruction.Text))),
+                new InstructionText(pageConfig.instruction.Text));
         }
     }
 }
