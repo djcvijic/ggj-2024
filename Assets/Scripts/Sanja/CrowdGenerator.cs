@@ -15,7 +15,6 @@ public class CrowdGenerator : MonoBehaviour
 
     private List<Seat> usedCatSeats = new List<Seat>();
 
-
     // TODO get the day of week in gameplay
     private DayOfWeek CurrentDayOfWeek => DateTime.Today.DayOfWeek;
 
