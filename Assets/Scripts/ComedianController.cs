@@ -17,9 +17,10 @@ public class ComedianController : MonoBehaviour
     [SerializeField] private int startCatCount = 3;
     [SerializeField] private float secondsForEachJoke = 60f;
 
-    private int currentCatCount;
-    private DayOfWeek currentDayOfWeek = DateTime.Today.DayOfWeek;
-    private float currentJokeProgress;
+    private int _currentCatCount;
+    private DayOfWeek _currentDayOfWeek = DateTime.Today.DayOfWeek;
+    private float _currentJokeProgress;
+    private bool _isGameOver;
 
     private void Start()
     {
@@ -34,18 +35,35 @@ public class ComedianController : MonoBehaviour
 
     private void StartNewDay(int catCount)
     {
-        currentCatCount = catCount;
-        currentDayOfWeek = (DayOfWeek)(((int)currentDayOfWeek + 1) % 7);
-        dayOfWeekText.text = currentDayOfWeek.ToString();
-        crowdGenerator.GenerateCats(currentCatCount, currentDayOfWeek);
-        currentJokeProgress = 1f;
+        _currentCatCount = catCount;
+        _currentDayOfWeek = (DayOfWeek)(((int)_currentDayOfWeek + 1) % 7);
+        dayOfWeekText.text = _currentDayOfWeek.ToString();
+        crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
+        _currentJokeProgress = 1f;
     }
 
     private void Update()
     {
-        currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
-        timeSlider.value = currentJokeProgress;
-        if (currentJokeProgress < -TimeBuffer)
+        if (_isGameOver)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            WinDay();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoseDay();
+            return;
+        }
+
+        _currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
+        timeSlider.value = _currentJokeProgress;
+        if (_currentJokeProgress < -TimeBuffer)
         {
             LoseDay();
         }
@@ -53,11 +71,35 @@ public class ComedianController : MonoBehaviour
 
     private void WinDay()
     {
-        StartNewDay(currentCatCount + 1);
+        if (_currentCatCount >= crowdGenerator.MaxCatCount)
+        {
+            WinGame();
+            return;
+        }
+
+        StartNewDay(_currentCatCount + 1);
     }
 
     private void LoseDay()
     {
-        StartNewDay(currentCatCount - 1);
+        if (_currentCatCount <= 1)
+        {
+            LoseGame();
+            return;
+        }
+
+        StartNewDay(_currentCatCount - 1);
+    }
+
+    private void WinGame()
+    {
+        dayOfWeekText.text = "YOU WIN";
+        _isGameOver = true;
+    }
+
+    private void LoseGame()
+    {
+        dayOfWeekText.text = "YOU LOSE";
+        _isGameOver = true;
     }
 }
