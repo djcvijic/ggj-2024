@@ -15,9 +15,6 @@ public class CrowdGenerator : MonoBehaviour
 
     private List<Seat> usedCatSeats = new List<Seat>();
 
-    //for testing
-    private List<Cat> cats = new List<Cat>();
-
     // TODO get the day of week in gameplay
     private DayOfWeek CurrentDayOfWeek => DateTime.Today.DayOfWeek;
 
@@ -33,6 +30,7 @@ public class CrowdGenerator : MonoBehaviour
         for (int i = 0; i < startCatCount; i++)
         {
             Cat cat = Instantiate(catPrefab, crowd);
+            cat.CreateCat();
 
             catSeat = catSeats[Random.Range(0, catSeats.Count)];
 
@@ -41,10 +39,8 @@ public class CrowdGenerator : MonoBehaviour
                 catSeat = catSeats[Random.Range(0, catSeats.Count)];
             }
 
-            usedCatSeats.Add(catSeat);
-
             cat.SetSeat(catSeat);
-            cats.Add(cat);
+            usedCatSeats.Add(catSeat);
 
             allCatsData.Add(cat.GetCatData());
         }
@@ -64,15 +60,10 @@ public class CrowdGenerator : MonoBehaviour
     {
         usedCatSeats.Clear();
 
-        if (cats.Count > 0)
+        foreach(Transform go in crowd.transform)
         {
-            foreach (Cat existingCat in cats)
-            {
-                Destroy(existingCat.gameObject);
-            }
+            Destroy(go.gameObject);
         }
-
-        cats.Clear();
 
         GenerateCats();
     }
