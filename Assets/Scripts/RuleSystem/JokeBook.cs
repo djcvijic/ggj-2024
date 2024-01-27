@@ -9,17 +9,20 @@ using UnityEngine.UI;
 public class JokeBook : MonoBehaviour
 {
     [SerializeField] private Button _tellJokeButton;
-    [SerializeField] private Button _jokeBookButton;
-    [SerializeField] private Button _exitButton;
     [SerializeField] private Button _closeBookButton;
+    [SerializeField] private List<Button> _jokeNumberButtons;
 
     private JokeBookConfig _config;
+    private int _jokeBookNumber;
 
     private void Start()
     {
         _config ??= JsonConvert.DeserializeObject<JokeBookConfig>(Resources.Load<TextAsset>("jokeBook").text);
 
-        _exitButton.onClick.AddListener(BackToMainMenu);
+        _closeBookButton.onClick.AddListener(CloseBook);
+        _tellJokeButton.onClick.AddListener(() => TellJoke(0));
+
+
     }
 
     private void ShowJoke(int jokeNumber)
@@ -41,9 +44,9 @@ public class JokeBook : MonoBehaviour
         }
     }
 
-    private void BackToMainMenu()
+    private void CloseBook()
     {
-        SceneManager.LoadScene("SceneMainMenu");
+        
     }
 
 }
