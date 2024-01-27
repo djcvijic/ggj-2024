@@ -25,18 +25,13 @@ public class Cat : MonoBehaviour
 
     private Seat catSeat;
 
-    private void Start()
+    public void CreateCat(CatColor ? specificColor = null, CatBuild ? specificBuild = null, CatAge ? specificAge = null, CatStatus ? specificStatus = null, CatGender ? specificGender = null)
     {
-        CreateCat();
-    }
-
-    public void CreateCat()
-    {
-        catColor = GetRandomEnumValue<CatColor>();
-        catBuild = GetRandomEnumValue<CatBuild>();
-        catAge = GetRandomEnumValue<CatAge>();
-        catStatus = GetRandomEnumValue<CatStatus>();
-        catGender = GetRandomEnumValue<CatGender>();
+        catColor = specificColor == null ? GetRandomEnumValue<CatColor>() : specificColor.Value;
+        catBuild = specificBuild == null ? GetRandomEnumValue<CatBuild>() : specificBuild.Value;
+        catAge = specificAge == null ? GetRandomEnumValue<CatAge>() : specificAge.Value;
+        catStatus = specificStatus == null ? GetRandomEnumValue<CatStatus>() : specificStatus.Value;
+        catGender = specificGender == null ? GetRandomEnumValue<CatGender>() : specificGender.Value;
 
         color.sprite = colors[(int)catColor];
 
@@ -72,7 +67,6 @@ public class Cat : MonoBehaviour
     public CatData GetCatData()
     {
         CatData catData = new CatData(catSeat.GetRowNumber, catSeat.GetSeatNumber, catColor, catBuild, catAge, catStatus, catGender);
-
         return catData;
     }
 
