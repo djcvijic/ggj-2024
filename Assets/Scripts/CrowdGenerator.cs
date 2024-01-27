@@ -43,8 +43,9 @@ public class CrowdGenerator : MonoBehaviour
             cats.Add(cat);
 
             allCatsData.Add(cat.GetCatData());
-            RuleBook.Instance.Initialize(allCatsData);
         }
+
+        RuleBook.Instance.Initialize(allCatsData);
     }
 
     private void Update()
