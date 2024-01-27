@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ComedianController : MonoBehaviour
 {
+    private const float TimeBuffer = 0.05f;
+
     [SerializeField] private Button jokeBookButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private Slider timeSlider;
@@ -21,7 +23,7 @@ public class ComedianController : MonoBehaviour
 
     private void Start()
     {
-        exitButton.onClick.AddListener(BackToMainMenu);
+        exitButton.onClick.SetListener(BackToMainMenu);
         StartNewDay(startCatCount);
     }
 
@@ -36,14 +38,14 @@ public class ComedianController : MonoBehaviour
         currentDayOfWeek = (DayOfWeek)(((int)currentDayOfWeek + 1) % 7);
         dayOfWeekText.text = currentDayOfWeek.ToString();
         crowdGenerator.GenerateCats(currentCatCount, currentDayOfWeek);
-        currentJokeProgress = 0;
+        currentJokeProgress = 1f;
     }
 
     private void Update()
     {
-        currentJokeProgress += Time.deltaTime / secondsForEachJoke;
+        currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
         timeSlider.value = currentJokeProgress;
-        if (currentJokeProgress > 1f)
+        if (currentJokeProgress < -TimeBuffer)
         {
             LoseDay();
         }

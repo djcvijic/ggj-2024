@@ -14,11 +14,11 @@ public class MainMenuController : MonoBehaviour
 
     public void Start()
     {
-        commedianButton.onClick.AddListener(() => LoadScene(PlayerType.Catmedian));
-        whispererButton.onClick.AddListener(() => LoadScene(PlayerType.CatWhisperer));
-        commedianClickButton.onClick.AddListener(() => SwitchCatButton(PlayerType.Catmedian));
-        whispererClickButton.onClick.AddListener(() => SwitchCatButton(PlayerType.CatWhisperer));
-        //shareButton.onClick.AddListener(() => OpenSharePopup());
+        commedianButton.onClick.SetListener(() => LoadScene(PlayerType.Catmedian));
+        whispererButton.onClick.SetListener(() => LoadScene(PlayerType.CatWhisperer));
+        commedianClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.Catmedian));
+        whispererClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.CatWhisperer));
+        //shareButton.onClick.SetListener(() => OpenSharePopup());
     }
 
     public void LoadScene(PlayerType playerType)
@@ -50,7 +50,7 @@ public class MainMenuController : MonoBehaviour
     private void OpenSharePopup()
     {
         shareQRImage.gameObject.SetActive(true);
-        shareQRImage.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => CloseSharePopup());
+        shareQRImage.gameObject.GetComponentInChildren<Button>().onClick.SetListener(() => CloseSharePopup());
     }
 
     private void CloseSharePopup()
