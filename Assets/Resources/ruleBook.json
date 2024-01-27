@@ -211,18 +211,125 @@
     {
       "rules": [
         {
-          "text": "If there is more than 2 cats wearing glasses"
+          "text": "If there is more than 2 cats wearing glasses",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Boomer"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 52
+          }
         },
         {
-          "text": "If there is more female than male cats"
+          "text": "If there is more female than male cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Female"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Male"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 53
+          }
         },
         {
-          "text": "If there is at least 1 outside skinny cat"
+          "text": "If there is at least 1 outside skinny cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Outside",
+                    "secondaryCheck": {
+                      "property": "Build",
+                      "value": "Thin"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 54
+          }
         },
         {
-          "text": "If there are enough millennial outside cats to fill half the bottom row"
+          "text": "If there are enough millennial outside cats to fill half the bottom row",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Millennial",
+                    "secondaryCheck": {
+                      "property": "Status",
+                      "value": "Outside"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 55
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 56
+      }
     }
   ]
 }

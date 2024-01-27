@@ -34,7 +34,7 @@
       "type": "Positional",
       "positional": {
         "row": 4,
-        "cell": 4,
+        "seat": 4,
         "propertyCheck": {
           "property": "Gender",
           "value": "Female"
