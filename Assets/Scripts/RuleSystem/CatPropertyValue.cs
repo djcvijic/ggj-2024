@@ -8,7 +8,7 @@ namespace RuleSystem
         Tabby = 4,
         Calico = 5,
         Fat = 6,
-        Thin = 7,
+        Skinny = 7,
         Muscular = 8,
         Boomer = 9,
         Millennial = 10,
