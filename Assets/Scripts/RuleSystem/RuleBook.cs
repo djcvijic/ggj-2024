@@ -26,10 +26,11 @@ namespace RuleSystem
         }
 
         /// <summary>
-        /// Get info about the current page to display in the rule book interface.
+        /// Get info about the page [1..14] to display in the rule book interface.
         /// </summary>
+        /// <param name="pageNumber"></param>
         /// <returns></returns>
-        public PageText GetPageText()
+        public PageText GetPageText(int pageNumber)
         {
             return new PageText(new List<RuleText>
             {
