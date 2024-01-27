@@ -287,7 +287,7 @@
                   "type": "PropertyCount",
                   "propertyCount": {
                     "property": "Build",
-                    "value": "Thin",
+                    "value": "Skinny",
                     "secondaryCheck": {
                       "property": "Status",
                       "value": "Inside"
@@ -422,7 +422,7 @@
                       "type": "PropertyCount",
                       "propertyCount": {
                         "property": "Build",
-                        "value": "Thin"
+                        "value": "Skinny"
                       }
                     },
                     "operation": "Sum",
@@ -493,7 +493,7 @@
                       "type": "PropertyCount",
                       "propertyCount": {
                         "property": "Build",
-                        "value": "Thin"
+                        "value": "Skinny"
                       }
                     }
                   }
@@ -815,7 +815,7 @@
                   "type": "PropertyCount",
                   "propertyCount": {
                     "property": "Build",
-                    "value": "Thin"
+                    "value": "Skinny"
                   }
                 },
                 "operation": "GreaterThanOrEqual",
@@ -884,7 +884,7 @@
                   "type": "PropertyCount",
                   "propertyCount": {
                     "property": "Build",
-                    "value": "Thin"
+                    "value": "Skinny"
                   }
                 },
                 "operation": "GreaterThan",
@@ -924,7 +924,7 @@
                     "value": "Inside",
                     "secondaryCheck": {
                       "property": "Build",
-                      "value": "Thin"
+                      "value": "Skinny"
                     }
                   }
                 }
@@ -1071,7 +1071,7 @@
                   "type": "PropertyCount",
                   "propertyCount": {
                     "property": "Build",
-                    "value": "Thin",
+                    "value": "Skinny",
                     "secondaryCheck": {
                       "property": "Status",
                       "value": "Stray"
@@ -1286,7 +1286,7 @@
                     "value": "Zoomer",
                     "secondaryCheck": {
                       "property": "Build",
-                      "value": "Thin"
+                      "value": "Skinny"
                     }
                   }
                 },
@@ -1759,7 +1759,7 @@
                   "type": "PropertyCount",
                   "propertyCount": {
                     "property": "Build",
-                    "value": "Thin",
+                    "value": "Skinny",
                     "secondaryCheck": {
                       "property": "Gender",
                       "value": "Female"
@@ -1947,7 +1947,7 @@
                     "value": "Outside",
                     "secondaryCheck": {
                       "property": "Build",
-                      "value": "Thin"
+                      "value": "Skinny"
                     }
                   }
                 },

@@ -46,7 +46,7 @@ namespace RuleSystem
             return build switch
             {
                 CatBuild.Fat => value == CatPropertyValue.Fat,
-                CatBuild.Thin => value == CatPropertyValue.Thin,
+                CatBuild.Skinny => value == CatPropertyValue.Skinny,
                 CatBuild.Muscular => value == CatPropertyValue.Muscular,
                 _ => throw new ArgumentOutOfRangeException(nameof(build), build, null)
             };
@@ -57,7 +57,7 @@ namespace RuleSystem
             return age switch
             {
                 CatAge.Boomer => value == CatPropertyValue.Boomer,
-                CatAge.Millenial => value == CatPropertyValue.Millennial,
+                CatAge.Millennial => value == CatPropertyValue.Millennial,
                 CatAge.Zoomer => value == CatPropertyValue.Zoomer,
                 _ => throw new ArgumentOutOfRangeException(nameof(age), age, null)
             };
