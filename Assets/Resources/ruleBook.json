@@ -3,215 +3,1884 @@
     {
       "rules": [
         {
-          "text": "If there are more black than white cats"
+          "text": "If there are more black than white cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "Black"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "White"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 57
+          }
         },
         {
-          "text": "If there is less zoomer cats than fat orange cats"
+          "text": "If there are fewer zoomer cats than fat orange cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Zoomer"
+                  }
+                },
+                "operation": "LessThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Fat",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Orange"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 58
+          }
         },
         {
-          "text": "If there is more male calico cats than female calico cats"
+          "text": "If there are more male calico cats than female calico cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Male",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Calico"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Female",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Calico"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 59
+          }
         },
         {
-          "text": "If there is an outside cat in the bottom left corner"
+          "text": "If there is an outside cat in the bottom left corner",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Outside"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 60
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 61
+      }
     },
     {
       "rules": [
         {
-          "text": "If there is more inside than outside cats"
+          "text": "If there are more inside than outside cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Inside"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Outside"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 62
+          }
         },
         {
-          "text": "If there is a tabby cat in the bottom right corner"
+          "text": "If there is a tabby cat in the bottom right corner",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 4,
+                "propertyCheck": {
+                  "property": "Color",
+                  "value": "Tabby"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 63
+          }
         },
         {
-          "text": "If there is more than 1 muscle shrodinger cat"
+          "text": "If there is more than 1 muscular Schrodinger cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Muscular",
+                    "secondaryCheck": {
+                      "property": "Gender",
+                      "value": "Schrodinger"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 64
+          }
         },
         {
-          "text": "If there is female cat in every corner"
+          "text": "If there is a female cat in every corner",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Gender",
+                  "value": "Female"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 3,
+                "propertyCheck": {
+                  "property": "Gender",
+                  "value": "Female"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Gender",
+                  "value": "Female"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 4,
+                "propertyCheck": {
+                  "property": "Gender",
+                  "value": "Female"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 65
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 66
+      }
     },
     {
       "rules": [
         {
-          "text": "If there is more stray than skinny inside cats"
+          "text": "If there are more strays than skinny inside cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Stray"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Thin",
+                    "secondaryCheck": {
+                      "property": "Status",
+                      "value": "Inside"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 67
+          }
         },
         {
-          "text": "If there is more shrodinger orange than shrodinger tabby cats"
+          "text": "If there are more Schrodinger orange than Schrodinger tabby cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Schrodinger",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Orange"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Schrodinger",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Tabby"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 68
+          }
         },
         {
-          "text": "If there are more than two calico cats and today is Sunday"
+          "text": "If there are more than two calico cats and today is Sunday",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "Calico"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            },
+            {
+              "type": "Temporal",
+              "temporal": {
+                "dayOfWeek": "Sunday"
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 69
+          }
         },
         {
-          "text": "If there are more than 2 stray tabby cats"
+          "text": "If there are more than 2 stray tabby cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Stray",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Tabby"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 70
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 1
+      }
     },
     {
       "rules": [
         {
-          "text": "If the sum of skinny and fat cats is greater than the number of muscly cats"
+          "text": "If the sum of skinny and fat cats is greater than the number of muscular cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "Expression",
+                  "expression": {
+                    "amount1": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Build",
+                        "value": "Thin"
+                      }
+                    },
+                    "operation": "Sum",
+                    "amount2": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Build",
+                        "value": "Fat"
+                      }
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Muscular"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 2
+          }
         },
         {
-          "text": "If difference between inside and stray cats is greater than fat and skinny cats"
+          "text": "If the sum of inside and stray cats is greater than sum of fat and skinny cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "Expression",
+                  "expression": {
+                    "amount1": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Status",
+                        "value": "Inside"
+                      }
+                    },
+                    "operation": "Sum",
+                    "amount2": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Status",
+                        "value": "Stray"
+                      }
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Expression",
+                  "expression": {
+                    "amount1": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Build",
+                        "value": "Fat"
+                      }
+                    },
+                    "operation": "Sum",
+                    "amount2": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Build",
+                        "value": "Thin"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 3
+          }
         },
         {
-          "text": "If there are female zoomer more than male zoomer cats"
+          "text": "If there are more female zoomer than male zoomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Female",
+                    "secondaryCheck": {
+                      "property": "Age",
+                      "value": "Zoomer"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Male",
+                    "propertyCount": {
+                      "property": "Age",
+                      "value": "Zoomer"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 4
+          }
         },
         {
-          "text": "If the sum of orange and white cats is greater than the number of calico cats"
+          "text": "If the sum of orange and white cats is greater than the number of calico cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "Expression",
+                  "expression": {
+                    "amount1": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Color",
+                        "value": "Orange"
+                      }
+                    },
+                    "operation": "Sum",
+                    "amount2": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Color",
+                        "value": "White"
+                      }
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "Calico"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 5
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 6
+      }
     },
     {
       "rules": [
         {
-          "text": "If outside cats are in every corner.(Cool loners)"
+          "text": "Cool loners! If there are outside cats in every corner",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Outside"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 3,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Outside"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Outside"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 4,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Outside"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 7
+          }
         },
         {
-          "text": "If there is a fat cat in the upper left corner"
+          "text": "If there is a fat cat in the upper left corner",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Build",
+                  "value": "Fat"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 8
+          }
         },
         {
-          "text": "If there is more than 1 calico female cat and its friday"
+          "text": "If there is more than 1 calico female cat and it's Friday",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "Calico",
+                    "secondaryCheck": {
+                      "property": "Gender",
+                      "value": "Female"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            },
+            {
+              "type": "Temporal",
+              "temporal": {
+                "dayOfWeek": "Friday"
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 9
+          }
         },
         {
-          "text": "If there is more millenial than male cats"
+          "text": "If there are more Millennial than male cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Millennial"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Male"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 10
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 11
+      }
     },
     {
       "rules": [
         {
-          "text": "If there are less inside zoomers than outside boomer cats"
+          "text": "If there are fewer inside zoomer than outside boomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Inside",
+                    "secondaryCheck": {
+                      "property": "Age",
+                      "value": "Zoomer"
+                    }
+                  }
+                },
+                "operation": "LessThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Outside",
+                    "propertyCount": {
+                      "property": "Age",
+                      "value": "Boomer"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 12
+          }
         },
         {
-          "text": "If there are more muscly than inside cats"
+          "text": "If there are more muscular than inside cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Muscular"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Inside"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 13
+          }
         },
         {
-          "text": "Skinny cat Tuesday! If there are at least 5 skinny cats and it is Tuesday"
+          "text": "Skinny cat Tuesday! If there are at least 5 skinny cats and it is Tuesday",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Thin"
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 5
+                }
+              }
+            },
+            {
+              "type": "Temporal",
+              "temporal": {
+                "dayOfWeek": "Tuesday"
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 14
+          }
         },
         {
-          "text": "If there are less black than boomer cats"
+          "text": "If there are fewer black than boomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "Black"
+                  }
+                },
+                "operation": "LessThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Boomer"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 15
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 16
+      }
     },
     {
       "rules": [
         {
-          "text": "If there are more skinny cats than boomer cats"
+          "text": "If there are more skinny cats than boomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Thin"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Boomer"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 17
+          }
         },
         {
-          "text": "If there is more shrodinger than inside skinny cats"
+          "text": "If there are more Schrodinger cats than inside skinny cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Schrodinger"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Inside",
+                    "secondaryCheck": {
+                      "property": "Build",
+                      "value": "Thin"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 18
+          }
         },
         {
-          "text": "If there is equal number female and fat cats"
+          "text": "If there is an equal number of female and fat cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Female"
+                  }
+                },
+                "operation": "Equal",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Fat"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 19
+          }
         },
         {
-          "text": "If there are 2 muscly cats and 3 or more white cats"
+          "text": "If there are 2 muscular cats and 3 or more white cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Muscular"
+                  }
+                },
+                "operation": "Equal",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            },
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "White"
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 3
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 20
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 21
+      }
     },
     {
       "rules": [
         {
-          "text": "If the number of inside cats is more than the number of fat zoomer cats"
+          "text": "If the number of inside cats is more than the number of fat zoomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Inside"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Fat",
+                    "secondaryCheck": {
+                      "property": "Age",
+                      "value": "Zoomer"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 22
+          }
         },
         {
-          "text": "If the number of fat inside cats is less than the number of skinny stray cats"
+          "text": "If the number of fat inside cats is less than the number of skinny stray cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Fat",
+                    "secondaryCheck": {
+                      "property": "Status",
+                      "value": "Inside"
+                    }
+                  }
+                },
+                "operation": "LessThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Thin",
+                    "secondaryCheck": {
+                      "property": "Status",
+                      "value": "Stray"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 23
+          }
         },
         {
-          "text": "If there is equal number of shrodinger and white cats"
+          "text": "If there is an equal number of Schrodinger and white cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Schrodinger"
+                  }
+                },
+                "operation": "Equal",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "White"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 24
+          }
         },
         {
-          "text": "If there is equal number of female outside and boomer muscly cats"
+          "text": "If there is an equal number of female outside and muscular boomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Female",
+                    "secondaryCheck": {
+                      "property": "Status",
+                      "value": "Outside"
+                    }
+                  }
+                },
+                "operation": "Equal",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Boomer",
+                    "secondaryCheck": {
+                      "property": "Build",
+                      "value": "Muscular"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 25
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 26
+      }
     },
     {
       "rules": [
         {
-          "text": "If the bottom row is full of stray cats"
+          "text": "If the bottom row is full of stray cats",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Stray"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 2,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Stray"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 3,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Stray"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 4,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Stray"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 27
+          }
         },
         {
-          "text": "If there is at least 1 boomer orange cat"
+          "text": "If there is at least 1 boomer orange cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Boomer",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "Orange"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 28
+          }
         },
         {
-          "text": "If there is at least one muscly female cat"
+          "text": "If there is at least one muscular female cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Muscular",
+                    "secondaryCheck": {
+                      "property": "Gender",
+                      "value": "Female"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 29
+          }
         },
         {
-          "text": "If there is 2 zoomer cats who are also skinny"
+          "text": "If there are 2 zoomer cats who are also skinny",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Zoomer",
+                    "secondaryCheck": {
+                      "property": "Build",
+                      "value": "Thin"
+                    }
+                  }
+                },
+                "operation": "Equal",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 30
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 31
+      }
     },
     {
       "rules": [
         {
-          "text": "If there are more zoomer than boomer cats"
+          "text": "If there are more zoomer than boomer cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Zoomer"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Boomer"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 32
+          }
         },
         {
-          "text": "If there is more than 2 stray muscly cats and today is weekend"
+          "text": "If there are more than 2 stray muscular cats and today is Friday",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Stray",
+                    "secondaryCheck": {
+                      "property": "Build",
+                      "value": "Muscular"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            },
+            {
+              "type": "Temporal",
+              "temporal": {
+                "dayOfWeek": "Friday"
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 33
+          }
         },
         {
-          "text": "If there is at least 1 millenial black cat"
+          "text": "If there is at least 1 millennial black cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Millennial",
+                    "extraPropertyCheck": {
+                      "property": "Color",
+                      "value": "Black"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 34
+          }
         },
         {
-          "text": "If there is a Schrodinger cat in the middle of the top row"
+          "text": "If there is a Schrodinger cat in the middle of the top row",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 2,
+                "propertyCheck": {
+                  "property": "Gender",
+                  "value": "Schrodinger"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 35
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 36
+      }
     },
     {
       "rules": [
         {
-          "text": "If the sum of stray and outside cats is more than sum of boomer and millenial cats"
+          "text": "If the sum of stray and outside cats is more than sum of boomer and millennial cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "Expression",
+                  "expression": {
+                    "amount1": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Status",
+                        "value": "Stray"
+                      }
+                    },
+                    "operation": "Sum",
+                    "amount2": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Status",
+                        "value": "Outside"
+                      }
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Expression",
+                  "expression": {
+                    "amount1": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Age",
+                        "value": "Boomer"
+                      }
+                    },
+                    "operation": "Sum",
+                    "amount2": {
+                      "type": "PropertyCount",
+                      "propertyCount": {
+                        "property": "Age",
+                        "value": "Millennial"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 37
+          }
         },
         {
-          "text": "If the top row is full of millennials"
+          "text": "If the top row is full of millennials",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Millennial"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 2,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Millennial"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 3,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Millennial"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 38
+          }
         },
         {
-          "text": "If there is at least 1 female tabby cat"
+          "text": "If there is at least 1 female tabby cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Gender",
+                    "value": "Female",
+                    "extraPropertyCheck": {
+                      "property": "Color",
+                      "value": "Tabby"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 39
+          }
         },
         {
-          "text": "if there is more millenial than orange cats and its Wednesday"
+          "text": "If there are more millennial than orange cats and it's Wednesday",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Millennial"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "Orange"
+                  }
+                }
+              }
+            },
+            {
+              "type": "Temporal",
+              "temporal": {
+                "dayOfWeek": "Wednesday"
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 40
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 41
+      }
     },
     {
       "rules": [
         {
-          "text": "If there is stray male cat in the upper right corner(lonely lurker)"
+          "text": "Lonely Lurker! If there is a stray male cat in the upper right corner",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 1,
+                "seat": 3,
+                "propertyCheck": {
+                  "property": "Status",
+                  "value": "Stray",
+                  "secondaryCheck": {
+                    "property": "Gender",
+                    "value": "Male"
+                  }
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 42
+          }
         },
         {
-          "text": "If there is at least 1 inside zoomer cat"
+          "text": "If there is at least 1 inside zoomer cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Inside",
+                    "secondaryCheck": {
+                      "property": "Age",
+                      "value": "Zoomer"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 43
+          }
         },
         {
-          "text": "If the bottom row is full of boomers"
+          "text": "If the bottom row is full of boomers",
+          "conditions": [
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 1,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Boomer"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 2,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Boomer"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 3,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Boomer"
+                }
+              }
+            },
+            {
+              "type": "Positional",
+              "positional": {
+                "row": 4,
+                "seat": 4,
+                "propertyCheck": {
+                  "property": "Age",
+                  "value": "Boomer"
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 44
+          }
         },
         {
-          "text": "if there is less than 2 outside fat cats"
+          "text": "If there are fewer than 2 outside fat cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Status",
+                    "value": "Outside",
+                    "secondaryCheck": {
+                      "property": "Build",
+                      "value": "Fat"
+                    }
+                  }
+                },
+                "operation": "LessThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 2
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 45
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 46
+      }
     },
     {
       "rules": [
         {
-          "text": "If there is more than 3 skinny female cats"
+          "text": "If there are more than 3 skinny female cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Thin",
+                    "secondaryCheck": {
+                      "property": "Gender",
+                      "value": "Female"
+                    }
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 3
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 47
+          }
         },
         {
-          "text": "If there is less than 3 muscly white cats"
+          "text": "If there are fewer than 3 muscular white cats",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Build",
+                    "value": "Muscular",
+                    "secondaryCheck": {
+                      "property": "Color",
+                      "value": "White"
+                    }
+                  }
+                },
+                "operation": "LessThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 3
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 48
+          }
         },
         {
-          "text": "If there is at least 1 white shrodinger cat"
+          "text": "If there is at least 1 white Schrodinger cat",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Color",
+                    "value": "White",
+                    "secondaryCheck": {
+                      "property": "Gender",
+                      "value": "Schrodinger"
+                    }
+                  }
+                },
+                "operation": "GreaterThanOrEqual",
+                "amount2": {
+                  "type": "Number",
+                  "number": 1
+                }
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 49
+          }
         },
         {
-          "text": "If there are more than three zoomers and it's a workday"
+          "text": "If there are more than three zoomers and it's a Monday",
+          "conditions": [
+            {
+              "type": "Comparison",
+              "comparison": {
+                "amount1": {
+                  "type": "PropertyCount",
+                  "propertyCount": {
+                    "property": "Age",
+                    "value": "Zoomer"
+                  }
+                },
+                "operation": "GreaterThan",
+                "amount2": {
+                  "type": "Number",
+                  "number": 3
+                }
+              }
+            },
+            {
+              "type": "Temporal",
+              "temporal": {
+                "dayOfWeek": "Monday"
+              }
+            }
+          ],
+          "instruction": {
+            "type": "TellJoke",
+            "jokeNumber": 50
+          }
         }
-      ]
+      ],
+      "elseInstruction": {
+        "type": "TellJoke",
+        "jokeNumber": 51
+      }
     },
     {
       "rules": [
         {
-          "text": "If there is more than 2 cats wearing glasses",
+          "text": "If there are more than 2 cats wearing glasses",
           "conditions": [
             {
               "type": "Comparison",
@@ -237,7 +1906,7 @@
           }
         },
         {
-          "text": "If there is more female than male cats",
+          "text": "If there are more female than male cats",
           "conditions": [
             {
               "type": "Comparison",
