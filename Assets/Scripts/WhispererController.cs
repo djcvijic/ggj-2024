@@ -40,6 +40,7 @@ public class WhispererController : MonoBehaviour
         }
         GameObject tableOfContents = Instantiate(pageSelectionPrefab, pageSelectionParent);
         tableOfContents.GetComponentInChildren<TextMeshProUGUI>().text = "15. Table Of Contents";
+        tableOfContents.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(128, 35, 17, 255);
         tableOfContents.GetComponent<Button>().onClick.AddListener(() => LoadTableOfContentsPage());
     }
 
