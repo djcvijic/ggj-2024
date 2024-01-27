@@ -1,0 +1,56 @@
+{
+  "conditions": [
+    {
+      "type": "Comparison",
+      "comparison": {
+        "amount1": {
+          "type": "Expression",
+          "expression": {
+            "amount1": {
+              "type": "PropertyCount",
+              "propertyCount": {
+                "property": "Fitness",
+                "value": "Thin"
+              }
+            },
+            "operator": "Difference",
+            "amount2": {
+              "type": "PropertyCount",
+              "propertyCount": {
+                "property": "Fitness",
+                "value": "Muscly"
+              }
+            }
+          }
+        },
+        "operator": "GreaterThan",
+        "amount2": {
+          "type": "Number",
+          "number": 5
+        }
+      }
+    },
+    {
+      "type": "Positional",
+      "positional": {
+        "row": 4,
+        "cell": 4,
+        "propertyCheck": {
+          "property": "Gender",
+          "value": "Female"
+        }
+      }
+    },
+    {
+      "type": "Temporal",
+      "temporal": {
+        "dayOfWeek": "Tuesday"
+      }
+    }
+  ],
+  "text": "",
+  "instruction": {
+    "type": "TellJoke",
+    "jokeNumber": 55
+  }
+}

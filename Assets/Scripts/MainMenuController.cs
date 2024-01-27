@@ -12,18 +12,18 @@ public class MainMenuController : MonoBehaviour
 
     public void Start()
     {
-        commedianButton.onClick.AddListener(() => LoadScene(PlayerType.Commedian));
-        whispererButton.onClick.AddListener(() => LoadScene(PlayerType.Whisperer));
+        commedianButton.onClick.AddListener(() => LoadScene(PlayerType.Catmedian));
+        whispererButton.onClick.AddListener(() => LoadScene(PlayerType.CatWhisperer));
         shareButton.onClick.AddListener(() => OpenSharePopup());
     }
 
     public void LoadScene(PlayerType playerType)
     {
-        if (playerType == PlayerType.Commedian)
+        if (playerType == PlayerType.Catmedian)
         {
             SceneManager.LoadScene("SceneCommedian");
         }
-        else if (playerType == PlayerType.Whisperer)
+        else if (playerType == PlayerType.CatWhisperer)
         {
             SceneManager.LoadScene("SceneWhisperer");
         }
