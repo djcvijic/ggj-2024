@@ -446,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 1222608852166698397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2028, y: 0.2028, z: 0.2028}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1222608850586375920}
@@ -469,13 +469,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b431a04d4f3ebea4ba836d726588cd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colors: []
-  builds: []
-  ages: []
-  statuses: []
-  genders: []
+  colors:
+  - {fileID: 21300000, guid: d6c29d873a0da204a9d8da7896ad98dc, type: 3}
+  - {fileID: 21300000, guid: 163b4669ec1f84246a90e64c4eaa02f3, type: 3}
+  - {fileID: 21300000, guid: 054d6e45eeac53a4e99eb081e87de684, type: 3}
+  - {fileID: 21300000, guid: e73568cc34fe6774c888c52e92812d18, type: 3}
+  - {fileID: 21300000, guid: b70fe9243b424284e85b8d49fa8317aa, type: 3}
+  builds:
+  - {fileID: 21300000, guid: 36a5cadd2236f5a4bbfd00895353f29f, type: 3}
+  - {fileID: 21300000, guid: d327dfcb4cce8d6439afc956b3f1072a, type: 3}
+  ages:
+  - {fileID: 21300000, guid: 22c6e02ae0c194348ac72389a3078faa, type: 3}
+  - {fileID: 21300000, guid: 4e0f29f2316ae1747a28d74c0f7bb877, type: 3}
+  - {fileID: 21300000, guid: b44ca7c480622054a819456bf4ee81a9, type: 3}
+  statuses:
+  - {fileID: 21300000, guid: bd530b29fbec4814d88b31ccae679c87, type: 3}
+  - {fileID: 21300000, guid: 8f85d0f6c79a2c6478b7940375889f09, type: 3}
+  genders:
+  - {fileID: 21300000, guid: 714b30566e39dcf4baa42ced07b9e33c, type: 3}
+  - {fileID: 21300000, guid: 0fc6cc64f1000be4eaae774006e8f804, type: 3}
+  - {fileID: 21300000, guid: 4106d1958f362e349bafd7cbe04b4d0c, type: 3}
+  - {fileID: 21300000, guid: 18c34c01319eee94cb1db6738accd227, type: 3}
   color: {fileID: 1222608850586375921}
   build: {fileID: 1222608852043261666}
-  status: {fileID: 1222608851508300214}
   age: {fileID: 1222608850196540979}
+  status: {fileID: 1222608851508300214}
   gender: {fileID: 1222608850739718168}
