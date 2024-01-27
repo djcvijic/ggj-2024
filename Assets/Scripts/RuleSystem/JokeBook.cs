@@ -16,7 +16,6 @@ public class JokeBook : MonoBehaviour
     [SerializeField] private List<Button> _jokeNumberButtons;
     [SerializeField] private GameObject _noteObject;
     [SerializeField] private GameObject _noteWithJokeObject;
-    [SerializeField] private GameObject _closeBookIndicator;
     [SerializeField] private TextMeshProUGUI _jokeText;
 
     private JokeBookConfig _config;
@@ -32,6 +31,12 @@ public class JokeBook : MonoBehaviour
         }
 
         _closeBookButton.onClick.SetListener(CloseBook);
+    }
+    public void OpenBook()
+    {
+        _openBookButton.gameObject.SetActive(false);
+        _noteObject.SetActive(true);
+        _closeBookButton.gameObject.SetActive(true);
     }
 
     private void ShowJoke(int jokeNumber)

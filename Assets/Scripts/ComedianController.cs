@@ -25,6 +25,7 @@ public class ComedianController : MonoBehaviour
     private void Start()
     {
         exitButton.onClick.SetListener(BackToMainMenu);
+        jokeBookButton.onClick.SetListener(jokeBook.OpenBook);
         StartNewDay(startCatCount);
     }
 
