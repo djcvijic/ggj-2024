@@ -13,7 +13,7 @@ public enum CatColor
     Black,
     White,
     Orange,
-    Gray,
+    Tabby,
     Calico
 }
 
