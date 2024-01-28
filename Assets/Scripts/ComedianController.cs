@@ -70,7 +70,7 @@ public class ComedianController : MonoBehaviour
         }
     }
 
-    private void WinDay()
+    public void WinDay()
     {
         if (_currentCatCount >= crowdGenerator.MaxCatCount)
         {
@@ -81,7 +81,7 @@ public class ComedianController : MonoBehaviour
         StartNewDay(_currentCatCount + 1);
     }
 
-    private void LoseDay()
+    public void LoseDay()
     {
         if (_currentCatCount <= 1)
         {

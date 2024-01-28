@@ -17,6 +17,7 @@ public class JokeBook : MonoBehaviour
     [SerializeField] private GameObject _noteObject;
     [SerializeField] private GameObject _noteWithJokeObject;
     [SerializeField] private TextMeshProUGUI _jokeText;
+    [SerializeField] private ComedianController _comedianController;
 
     private JokeBookConfig _config;
 
@@ -60,11 +61,11 @@ public class JokeBook : MonoBehaviour
     {
         if(RuleBook.Instance.IsCorrectJoke(jokeNumber))
         {
-            Debug.LogError("Correct!");
+            _comedianController.WinDay();
         }
         else
         {
-            Debug.LogError("Incorrect!");
+            _comedianController.LoseDay();
         }
     }
 
