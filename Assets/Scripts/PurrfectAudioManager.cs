@@ -15,7 +15,7 @@ public class PurrfectAudioManager : AudioManager
     [SerializeField] private AudioClipSettings levelBase;
     [SerializeField] private AudioClipSettings[] levelStates;
 
-    private int? _currentState;
+    private int _currentState;
 
     public void StartMainMenuMusic()
     {
@@ -55,7 +55,7 @@ public class PurrfectAudioManager : AudioManager
     {
         if (state == _currentState) return;
 
-        if (_currentState.HasValue) FadeAudio(levelStates[_currentState.Value - 1], 0, musicFadeDuration);
+        FadeAudio(levelStates[_currentState - 1], 0, musicFadeDuration);
         FadeAudio(levelStates[state - 1], 1, musicFadeDuration);
         _currentState = state;
     }
