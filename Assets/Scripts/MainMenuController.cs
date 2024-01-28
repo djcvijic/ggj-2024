@@ -10,7 +10,11 @@ public class MainMenuController : MonoBehaviour
     public Button commedianClickButton;
     public Button whispererClickButton;
     public Button shareButton;
+    public Button creditsButton;
     public Image shareQRImage;
+    public Image creditsImage;
+    public Button closeShare;
+    public Button closeCredits;
 
     public void Start()
     {
@@ -18,7 +22,8 @@ public class MainMenuController : MonoBehaviour
         whispererButton.onClick.SetListener(() => LoadScene(PlayerType.CatWhisperer));
         commedianClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.Catmedian));
         whispererClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.CatWhisperer));
-        //shareButton.onClick.SetListener(() => OpenSharePopup());
+        shareButton.onClick.SetListener(() => OpenSharePopup());
+        creditsButton.onClick.SetListener(() => OpenCreditsPopup());
 
         PurrfectAudioManager.Instance.StartMainMenuMusic();
     }
@@ -52,11 +57,21 @@ public class MainMenuController : MonoBehaviour
     private void OpenSharePopup()
     {
         shareQRImage.gameObject.SetActive(true);
-        shareQRImage.gameObject.GetComponentInChildren<Button>().onClick.SetListener(() => CloseSharePopup());
+        closeShare.onClick.SetListener(() => CloseSharePopup());
     }
 
     private void CloseSharePopup()
     {
         shareQRImage.gameObject.SetActive(false);
+    }
+
+    private void OpenCreditsPopup()
+    {
+        creditsImage.gameObject.SetActive(true);
+        closeCredits.onClick.SetListener(() => CloseCreditsPopup());
+    }
+    private void CloseCreditsPopup()
+    {
+        creditsImage.gameObject.SetActive(false);
     }
 }
