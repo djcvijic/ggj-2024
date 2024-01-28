@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioType: 0
   variants:
-  - {fileID: 8300000, guid: e18f4ac6c8a954b0f97e18c1edf19b88, type: 3}
+  - {fileID: 8300000, guid: 6c763ed1c6af84f43bb557a8914bcc63, type: 3}
   defaultVolume: 1
   limitBehaviour: 0

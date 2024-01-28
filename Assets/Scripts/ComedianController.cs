@@ -126,6 +126,7 @@ public class ComedianController : MonoBehaviour
         dayEndText.gameObject.SetActive(false);
         dayEndHolder.SetActive(true);
         dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        PurrfectAudioManager.Instance.WinCheer((float)_currentCatCount / crowdGenerator.MaxCatCount);
         for (int i = 0; i < cats.Count; i++)
         {
             StartCoroutine(cats[i].Laugh());
@@ -151,6 +152,7 @@ public class ComedianController : MonoBehaviour
         dayEndText.gameObject.SetActive(false);
         dayEndHolder.SetActive(true);
         dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        PurrfectAudioManager.Instance.LoseBoo((float)_currentCatCount / crowdGenerator.MaxCatCount);
         yield return new WaitForSeconds(1.5f);
         dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
         dayEndText.gameObject.SetActive(true);
