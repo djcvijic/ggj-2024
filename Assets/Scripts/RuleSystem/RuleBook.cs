@@ -21,15 +21,14 @@ namespace RuleSystem
         }
 
         /// <summary>
-        /// Check if the joke with the selected number [1..70] is the correct one.
+        /// Returns the correct joke [1..70].
         /// </summary>
-        /// <param name="jokeNumber"></param>
         /// <returns></returns>
-        public bool IsCorrectJoke(int jokeNumber)
+        public int GetCorrectJoke()
         {
             var currentPageNumber = _audienceData.cats.Count;
             var currentPage = Config.pages[currentPageNumber - 1];
-            return currentPage.IsCorrectJoke(jokeNumber, _audienceData);
+            return currentPage.GetCorrectJoke(_audienceData);
         }
 
         /// <summary>

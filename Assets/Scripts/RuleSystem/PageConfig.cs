@@ -8,12 +8,12 @@ namespace RuleSystem
         [JsonProperty] public readonly List<RuleConfig> rules;
         [JsonProperty] public readonly InstructionConfig elseInstruction;
 
-        public bool IsCorrectJoke(int jokeNumber, AudienceData audienceData)
+        public int GetCorrectJoke(AudienceData audienceData)
         {
             var firstSatisfiedRule = rules.Find(x => x.IsSatisfied(audienceData));
             return firstSatisfiedRule != null
-                ? firstSatisfiedRule.instruction.jokeNumber == jokeNumber
-                : elseInstruction.jokeNumber == jokeNumber;
+                ? firstSatisfiedRule.instruction.jokeNumber
+                : elseInstruction.jokeNumber;
         }
     }
 }
