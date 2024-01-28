@@ -45,7 +45,7 @@ public class JokeBook : MonoBehaviour
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(true);
 
-        _jokeText.text = FormatJoke(_config.GetJokeConfig(jokeNumber).text);
+        _jokeText.text = _config.GetJokeConfig(jokeNumber).text;
 
         _tellJokeButton.onClick.SetListener(() => TellJoke(jokeNumber));
         _backButton.onClick.SetListener(CloseJoke);
@@ -75,11 +75,6 @@ public class JokeBook : MonoBehaviour
         _noteWithJokeObject.SetActive(false);
         _closeBookButton.gameObject.SetActive(false);
         _openBookButton.gameObject.SetActive(true);
-    }
-
-    private string FormatJoke(string joke)
-    {
-        return joke.Replace("\\n", "\n");
     }
 
 }
