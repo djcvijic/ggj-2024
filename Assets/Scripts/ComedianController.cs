@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,8 +18,11 @@ public class ComedianController : MonoBehaviour
     [SerializeField] private TMP_Text dayOfWeekText;
     [SerializeField] private CrowdGenerator crowdGenerator;
     [SerializeField] private JokeBook jokeBook;
-    [SerializeField] private int startCatCount = 3;
+    [SerializeField] private int startCatCount = 13;
     [SerializeField] private float secondsForEachJoke = 60f;
+    [SerializeField] private GameObject dayEndHolder;
+    [SerializeField] private TMP_Text dayEndText;
+    [SerializeField] private Button gameEndButton;
 
     private int _currentCatCount;
     private DayOfWeek _currentDayOfWeek = DateTime.Today.DayOfWeek;
@@ -30,6 +34,7 @@ public class ComedianController : MonoBehaviour
     private void Start()
     {
         exitButton.onClick.SetListener(BackToMainMenu);
+        gameEndButton.onClick.SetListener(BackToMainMenu);
         jokeBookButton.onClick.SetListener(jokeBook.OpenBook);
         StartNewDay(startCatCount);
 
@@ -83,17 +88,12 @@ public class ComedianController : MonoBehaviour
 
     public void WinDay()
     {
-        if (_currentCatCount >= crowdGenerator.MaxCatCount)
-        {
-            WinGame();
-            return;
-        }
-
-        StartNewDay(_currentCatCount + 1);
+        StartCoroutine(WinDayCoroutine());
     }
 
     public void LoseDay()
     {
+        
         if (_currentCatCount <= 1)
         {
             LoseGame();
@@ -105,11 +105,7 @@ public class ComedianController : MonoBehaviour
 
     private void WinGame()
     {
-        for (int i = 0; i < cats.Count; i++)
-        {
-            StartCoroutine(cats[i].Laugh());
-        }
-        dayOfWeekText.text = "YOU WIN";
+        dayEndText.text = $"Congrats! You're a catmedy legend!";
         _isGameOver = true;
     }
 
@@ -117,5 +113,29 @@ public class ComedianController : MonoBehaviour
     {
         dayOfWeekText.text = "YOU LOSE";
         _isGameOver = true;
+    }
+
+    private IEnumerator WinDayCoroutine()
+    {
+        jokeBook.CloseBook();
+        dayEndText.gameObject.SetActive(false);
+        dayEndHolder.SetActive(true);
+        dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        for (int i = 0; i < cats.Count; i++)
+        {
+            StartCoroutine(cats[i].Laugh());
+        }
+        yield return new WaitForSeconds(1.5f);
+        dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
+        dayEndText.gameObject.SetActive(true);
+        if (_currentCatCount >= crowdGenerator.MaxCatCount)
+        {
+            WinGame();
+            yield break;
+        }
+        dayEndText.text = $"Get ready for {(DayOfWeek)(((int)_currentDayOfWeek + 1) % 7)}! \n \n Audience of {_currentCatCount + 1}!";
+        yield return new WaitForSeconds(1.5f);
+        dayEndHolder.SetActive(false);
+        StartNewDay(_currentCatCount + 1);
     }
 }
