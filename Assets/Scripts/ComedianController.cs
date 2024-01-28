@@ -93,25 +93,18 @@ public class ComedianController : MonoBehaviour
 
     public void LoseDay()
     {
-        
-        if (_currentCatCount <= 1)
-        {
-            LoseGame();
-            return;
-        }
-
-        StartNewDay(_currentCatCount - 1);
+        StartCoroutine(LoseDayCoroutine());
     }
 
     private void WinGame()
     {
-        dayEndText.text = $"Congrats! You're a catmedy legend!";
+        dayEndText.text = $"Congrats! \n You're a catmedy legend!";
         _isGameOver = true;
     }
 
     private void LoseGame()
     {
-        dayOfWeekText.text = "YOU LOSE";
+        dayEndText.text = $"Wow dude! \n Put your material in the litter box!";
         _isGameOver = true;
     }
 
@@ -133,9 +126,29 @@ public class ComedianController : MonoBehaviour
             WinGame();
             yield break;
         }
-        dayEndText.text = $"Get ready for {(DayOfWeek)(((int)_currentDayOfWeek + 1) % 7)}! \n \n Audience of {_currentCatCount + 1}!";
+        dayEndText.text = $"Great joke! \n Get ready for {(DayOfWeek)(((int)_currentDayOfWeek + 1) % 7)}! \n \n Audience of {_currentCatCount + 1}!";
         yield return new WaitForSeconds(1.5f);
         dayEndHolder.SetActive(false);
         StartNewDay(_currentCatCount + 1);
+    }
+
+    private IEnumerator LoseDayCoroutine()
+    {
+        jokeBook.CloseBook();
+        dayEndText.gameObject.SetActive(false);
+        dayEndHolder.SetActive(true);
+        dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        yield return new WaitForSeconds(1.5f);
+        dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
+        dayEndText.gameObject.SetActive(true);
+        if (_currentCatCount <= 1)
+        {
+            LoseGame();
+            yield break;
+        }
+        dayEndText.text = $"You bombed! \n Get ready for {(DayOfWeek)(((int)_currentDayOfWeek + 1) % 7)}! \n \n Audience of {_currentCatCount - 1}!";
+        yield return new WaitForSeconds(1.5f);
+        dayEndHolder.SetActive(false);
+        StartNewDay(_currentCatCount - 1);
     }
 }
