@@ -17,14 +17,21 @@ public class JokeBook : MonoBehaviour
     [SerializeField] private GameObject _noteObject;
     [SerializeField] private GameObject _noteWithJokeObject;
     [SerializeField] private TextMeshProUGUI _jokeText;
+    [SerializeField] private ComedianController _comedianController;
 
     private JokeBookConfig _config;
 
     private void Start()
     {
         _config ??= JsonConvert.DeserializeObject<JokeBookConfig>(Resources.Load<TextAsset>("jokeBook").text);
+    }
+    public void OpenBook()
+    {
+        _openBookButton.gameObject.SetActive(false);
+        _noteObject.SetActive(true);
+        _closeBookButton.gameObject.SetActive(true);
 
-        for(int i = 0; i < _jokeNumberButtons.Count; i++)
+        for (int i = 0; i < _jokeNumberButtons.Count; i++)
         {
             var jokeNumber = i;
             _jokeNumberButtons[i].onClick.SetListener(() => ShowJoke(jokeNumber));
@@ -32,19 +39,13 @@ public class JokeBook : MonoBehaviour
 
         _closeBookButton.onClick.SetListener(CloseBook);
     }
-    public void OpenBook()
-    {
-        _openBookButton.gameObject.SetActive(false);
-        _noteObject.SetActive(true);
-        _closeBookButton.gameObject.SetActive(true);
-    }
 
     private void ShowJoke(int jokeNumber)
     {
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(true);
 
-        _jokeText.text = _config.GetJokeConfig(jokeNumber).text;
+        _jokeText.text = FormatJoke(_config.GetJokeConfig(jokeNumber).text);
 
         _tellJokeButton.onClick.SetListener(() => TellJoke(jokeNumber));
         _backButton.onClick.SetListener(CloseJoke);
@@ -52,19 +53,19 @@ public class JokeBook : MonoBehaviour
 
     private void CloseJoke()
     {
-        _noteObject.SetActive(false);
-        _noteWithJokeObject.SetActive(true);
+        _noteObject.SetActive(true);
+        _noteWithJokeObject.SetActive(false);
     }
 
     private void TellJoke(int jokeNumber)
     {
         if(RuleBook.Instance.IsCorrectJoke(jokeNumber))
         {
-            Debug.LogError("Correct!");
+            _comedianController.WinDay();
         }
         else
         {
-            Debug.LogError("Incorrect!");
+            _comedianController.LoseDay();
         }
     }
 
@@ -72,7 +73,13 @@ public class JokeBook : MonoBehaviour
     {
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(false);
+        _closeBookButton.gameObject.SetActive(false);
         _openBookButton.gameObject.SetActive(true);
+    }
+
+    private string FormatJoke(string joke)
+    {
+        return joke.Replace("\\n", "\n");
     }
 
 }

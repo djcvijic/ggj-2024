@@ -76,7 +76,7 @@ namespace Audio
 		{
 			var sourceList = DetermineSourceList(settings.AudioType);
 			var source = FindSourceByClip(sourceList, settings);
-			source.Stop();
+			if (source != null) source.Stop();
 		}
 
 		private List<AudioSource> DetermineSourceList(AudioType audioType)

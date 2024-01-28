@@ -9,6 +9,8 @@ public class ComedianController : MonoBehaviour
 {
     private const float TimeBuffer = 0.05f;
 
+    private static readonly List<float> MusicStateBreakpoints = new() { 0.75f, 0.5f, 0.25f, float.MinValue };
+
     [SerializeField] private Button jokeBookButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private Slider timeSlider;
@@ -30,6 +32,8 @@ public class ComedianController : MonoBehaviour
         exitButton.onClick.SetListener(BackToMainMenu);
         jokeBookButton.onClick.SetListener(jokeBook.OpenBook);
         StartNewDay(startCatCount);
+
+        PurrfectAudioManager.Instance.StartLevelMusic();
     }
 
     private static void BackToMainMenu()
@@ -67,13 +71,17 @@ public class ComedianController : MonoBehaviour
 
         _currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
         timeSlider.value = _currentJokeProgress;
+
+        var musicStateIndex = MusicStateBreakpoints.FindIndex(x => _currentJokeProgress >= x);
+        PurrfectAudioManager.Instance.FadeToState(1 + musicStateIndex);
+
         if (_currentJokeProgress < -TimeBuffer)
         {
             LoseDay();
         }
     }
 
-    private void WinDay()
+    public void WinDay()
     {
         if (_currentCatCount >= crowdGenerator.MaxCatCount)
         {
@@ -84,7 +92,7 @@ public class ComedianController : MonoBehaviour
         StartNewDay(_currentCatCount + 1);
     }
 
-    private void LoseDay()
+    public void LoseDay()
     {
         if (_currentCatCount <= 1)
         {
