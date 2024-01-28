@@ -51,7 +51,7 @@ public class ComedianController : MonoBehaviour
     {
         _currentCatCount = catCount;
         _currentDayOfWeek = (DayOfWeek)(((int)_currentDayOfWeek + 1) % 7);
-        dayOfWeekText.text = _currentDayOfWeek.ToString();
+        dayOfWeekText.text = _currentDayOfWeek.ToString().Substring(0, 3).ToUpper();
         cats = crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
         _currentJokeProgress = 1f;
     }
