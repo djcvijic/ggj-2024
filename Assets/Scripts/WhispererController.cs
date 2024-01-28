@@ -47,6 +47,7 @@ public class WhispererController : MonoBehaviour
 
     private void LoadPage(int pageNumber)
     {
+        PurrfectAudioManager.Instance.FlipPage();
         var pageText = RuleBook.Instance.GetPageText(pageNumber);
         var rules = pageText.rules;
         var finalInstruction = pageText.elseInstruction;
@@ -70,7 +71,7 @@ public class WhispererController : MonoBehaviour
 
     private void LoadTableOfContentsPage()
     {
-
+        PurrfectAudioManager.Instance.FlipPage();
         backButton.gameObject.SetActive(true);
         pagesScroll.SetActive(false);
         rulesScroll.SetActive(true);
@@ -122,6 +123,7 @@ public class WhispererController : MonoBehaviour
 
     private void UnloadPage()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         foreach (var rule in rulesList)
         {
             Destroy(rule);
