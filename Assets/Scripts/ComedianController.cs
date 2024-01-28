@@ -1,3 +1,4 @@
+using RuleSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ public class ComedianController : MonoBehaviour
         dayOfWeekText.text = _currentDayOfWeek.ToString();
         cats = crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
         _currentJokeProgress = 1f;
+        Debug.Log(RuleBook.Instance.GetCorrectJoke());
     }
 
     private void Update()
