@@ -25,6 +25,8 @@ public class ComedianController : MonoBehaviour
     private float _currentJokeProgress;
     private bool _isGameOver;
 
+    private List<Cat> cats = new List<Cat>();
+
     private void Start()
     {
         exitButton.onClick.SetListener(BackToMainMenu);
@@ -44,7 +46,7 @@ public class ComedianController : MonoBehaviour
         _currentCatCount = catCount;
         _currentDayOfWeek = (DayOfWeek)(((int)_currentDayOfWeek + 1) % 7);
         dayOfWeekText.text = _currentDayOfWeek.ToString();
-        crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
+        cats = crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
         _currentJokeProgress = 1f;
     }
 
@@ -103,6 +105,10 @@ public class ComedianController : MonoBehaviour
 
     private void WinGame()
     {
+        for (int i = 0; i < cats.Count; i++)
+        {
+            StartCoroutine(cats[i].Laugh());
+        }
         dayOfWeekText.text = "YOU WIN";
         _isGameOver = true;
     }

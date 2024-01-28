@@ -8,14 +8,22 @@ public class Cat : MonoBehaviour
     [SerializeField] private List<Sprite> colors;
     [SerializeField] private List<Sprite> builds;
     [SerializeField] private List<Sprite> ages;
+    [SerializeField] private List<Sprite> agesLaugh;
     [SerializeField] private List<Sprite> statuses;
     [SerializeField] private List<Sprite> genders;
+    [SerializeField] private List<Sprite> blinks1;
+    [SerializeField] private List<Sprite> blinks2;
 
     [SerializeField] private SpriteRenderer color;
     [SerializeField] private SpriteRenderer build;
     [SerializeField] private SpriteRenderer age;
     [SerializeField] private SpriteRenderer status;
     [SerializeField] private SpriteRenderer gender;
+    [SerializeField] private SpriteRenderer blink1;
+    [SerializeField] private SpriteRenderer blink2;
+
+    [SerializeField] private Animation anim;
+    [SerializeField] private GameObject laughMouth;
 
     private CatColor catColor;
     private CatBuild catBuild;
@@ -41,6 +49,8 @@ public class Cat : MonoBehaviour
         }
 
         age.sprite = ages[(int)catAge];
+        blink1.sprite = blinks1[(int)catAge];
+        blink2.sprite = blinks2[(int)catAge];
 
         if (catStatus != CatStatus.Outside)
         {
@@ -49,12 +59,22 @@ public class Cat : MonoBehaviour
         
         if (catGender == CatGender.Female)
         {
-            gender.sprite = genders[(int)catAge];
+            gender.sprite = genders[0];
         }
 
         else if (catGender == CatGender.Schrodinger)
         {
-            gender.sprite = genders[3];
+            gender.sprite = genders[1];
+        }
+
+        StartCoroutine(Blink());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartCoroutine(Laugh());
         }
     }
 
@@ -75,5 +95,19 @@ public class Cat : MonoBehaviour
         System.Array enumValues = System.Enum.GetValues(typeof(T));
         T randomEnumValue = (T)enumValues.GetValue(Random.Range(0, enumValues.Length));
         return randomEnumValue;
+    }
+
+    private IEnumerator Blink()
+    {
+        yield return new WaitForSeconds(Random.Range(0.1f, 3f));
+        anim.Play("Blink");
+    }
+
+    public IEnumerator Laugh()
+    {
+        yield return new WaitForSeconds(Random.Range(0, 0.5f));
+        anim.Play("CatLaugh");
+        age.sprite = agesLaugh[(int)catAge];
+        laughMouth.SetActive(true);
     }
 }
