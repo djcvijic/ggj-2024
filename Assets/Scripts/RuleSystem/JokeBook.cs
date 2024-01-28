@@ -23,20 +23,20 @@ public class JokeBook : MonoBehaviour
     private void Start()
     {
         _config ??= JsonConvert.DeserializeObject<JokeBookConfig>(Resources.Load<TextAsset>("jokeBook").text);
-
-        for(int i = 0; i < _jokeNumberButtons.Count; i++)
-        {
-            var jokeNumber = i;
-            _jokeNumberButtons[i].onClick.SetListener(() => ShowJoke(jokeNumber));
-        }
-
-        _closeBookButton.onClick.SetListener(CloseBook);
     }
     public void OpenBook()
     {
         _openBookButton.gameObject.SetActive(false);
         _noteObject.SetActive(true);
         _closeBookButton.gameObject.SetActive(true);
+
+        for (int i = 0; i < _jokeNumberButtons.Count; i++)
+        {
+            var jokeNumber = i;
+            _jokeNumberButtons[i].onClick.SetListener(() => ShowJoke(jokeNumber));
+        }
+
+        _closeBookButton.onClick.SetListener(CloseBook);
     }
 
     private void ShowJoke(int jokeNumber)
@@ -52,8 +52,8 @@ public class JokeBook : MonoBehaviour
 
     private void CloseJoke()
     {
-        _noteObject.SetActive(false);
-        _noteWithJokeObject.SetActive(true);
+        _noteObject.SetActive(true);
+        _noteWithJokeObject.SetActive(false);
     }
 
     private void TellJoke(int jokeNumber)
@@ -72,6 +72,7 @@ public class JokeBook : MonoBehaviour
     {
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(false);
+        _closeBookButton.gameObject.SetActive(false);
         _openBookButton.gameObject.SetActive(true);
     }
 
