@@ -23,6 +23,7 @@ public class WhispererController : MonoBehaviour
 
     [SerializeField] private GameObject catHolderPrefab;
     [SerializeField] private GameObject catPrefab;
+    [SerializeField] private GameObject legendImagePrefab;
 
     private List<GameObject> rulesList = new List<GameObject>();
 
@@ -82,21 +83,41 @@ public class WhispererController : MonoBehaviour
         colorTitle.GetComponentInChildren<TextMeshProUGUI>().text = "Cat Colors:";
         rulesList.Add(colorTitle);
 
+        GameObject colorDescription = Instantiate(legendImagePrefab, rulesParent);
+        colorDescription.GetComponent<Image>().sprite = Resources.Load<Sprite>("Legenda/Legend_Color");
+        rulesList.Add(colorDescription);
+
         GameObject ageTitle = Instantiate(rulesPrefab, rulesParent);
         ageTitle.GetComponentInChildren<TextMeshProUGUI>().text = "Cat Ages:";
         rulesList.Add(ageTitle);
+
+        GameObject ageDescription = Instantiate(legendImagePrefab, rulesParent);
+        ageDescription.GetComponent<Image>().sprite = Resources.Load<Sprite>("Legenda/Legend_Age");
+        rulesList.Add(ageDescription);
 
         GameObject genderTitle = Instantiate(rulesPrefab, rulesParent);
         genderTitle.GetComponentInChildren<TextMeshProUGUI>().text = "Cat Genders:";
         rulesList.Add(genderTitle);
 
+        GameObject genderDescription = Instantiate(legendImagePrefab, rulesParent);
+        genderDescription.GetComponent<Image>().sprite = Resources.Load<Sprite>("Legenda/Legend_Gender");
+        rulesList.Add(genderDescription);
+
         GameObject statusTitle = Instantiate(rulesPrefab, rulesParent);
         statusTitle.GetComponentInChildren<TextMeshProUGUI>().text = "Cat Statuses:";
         rulesList.Add(statusTitle);
 
+        GameObject statusDescription = Instantiate(legendImagePrefab, rulesParent);
+        statusDescription.GetComponent<Image>().sprite = Resources.Load<Sprite>("Legenda/Legend_Status");
+        rulesList.Add(statusDescription);
+
         GameObject buildTitle = Instantiate(rulesPrefab, rulesParent);
         buildTitle.GetComponentInChildren<TextMeshProUGUI>().text = "Cat Builds:";
         rulesList.Add(buildTitle);
+
+        GameObject buildDescription = Instantiate(legendImagePrefab, rulesParent);
+        buildDescription.GetComponent<Image>().sprite = Resources.Load<Sprite>("Legenda/Legend_Build");
+        rulesList.Add(buildDescription);
     }
 
     private void UnloadPage()
