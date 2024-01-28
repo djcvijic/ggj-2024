@@ -16,6 +16,7 @@ public class PurrfectAudioManager : AudioManager
     [SerializeField] private AudioClipSettings[] levelStates;
 
     private int _currentState;
+    private bool _mainMenuMusicPlaying;
 
     public void StartMainMenuMusic()
     {
@@ -25,8 +26,12 @@ public class PurrfectAudioManager : AudioManager
             StopAudio(state);
         }
 
-        PlayAudio(mainMenuStart);
-        StartCoroutine(MainMenuMusicLoop());
+        if (!_mainMenuMusicPlaying)
+        {
+            _mainMenuMusicPlaying = true;
+            PlayAudio(mainMenuStart);
+            StartCoroutine(MainMenuMusicLoop());
+        }
     }
 
     private IEnumerator MainMenuMusicLoop()
@@ -41,6 +46,7 @@ public class PurrfectAudioManager : AudioManager
     {
         StopAudio(mainMenuStart);
         StopAudio(mainMenuLoop);
+        _mainMenuMusicPlaying = false;
 
         PlayAudio(levelBase);
         foreach (var state in levelStates)
