@@ -143,7 +143,7 @@ public class ComedianController : MonoBehaviour
             yield break;
         }
         dayEndText.text = $"Great joke! \n Get ready for {(DayOfWeek)(((int)_currentDayOfWeek + 1) % 7)}! \n \n Audience of {_currentCatCount + 1}!";
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         dayEndHolder.SetActive(false);
         StartNewDay(_currentCatCount + 1);
     }
@@ -167,7 +167,7 @@ public class ComedianController : MonoBehaviour
             yield break;
         }
         dayEndText.text = $"You bombed! \n Get ready for {(DayOfWeek)(((int)_currentDayOfWeek + 1) % 7)}! \n \n Audience of {_currentCatCount - 1}!";
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         dayEndHolder.SetActive(false);
         StartNewDay(_currentCatCount - 1);
     }
