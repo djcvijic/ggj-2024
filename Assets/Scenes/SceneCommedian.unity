@@ -1756,7 +1756,9 @@ MonoBehaviour:
   crowdGenerator: {fileID: 2093046860}
   jokeBook: {fileID: 180518692}
   startCatCount: 3
+  baseSecondsForJoke: 45
   secondsForEachJoke: 60
+  secondsPerCat: 5
   dayEndHolder: {fileID: 1065375189}
   dayEndText: {fileID: 1065375188}
   gameEndButton: {fileID: 1065375186}

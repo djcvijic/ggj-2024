@@ -33,7 +33,7 @@ public class JokeBook : MonoBehaviour
 
         for (int i = 0; i < _jokeNumberButtons.Count; i++)
         {
-            var jokeNumber = i;
+            var jokeNumber = i + 1;
             _jokeNumberButtons[i].onClick.SetListener(() => ShowJoke(jokeNumber));
         }
 

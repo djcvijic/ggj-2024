@@ -1,3 +1,4 @@
+using RuleSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,8 +18,10 @@ public class ComedianController : MonoBehaviour
     [SerializeField] private TMP_Text dayOfWeekText;
     [SerializeField] private CrowdGenerator crowdGenerator;
     [SerializeField] private JokeBook jokeBook;
-    [SerializeField] private int startCatCount = 13;
+    [SerializeField] private int startCatCount = 3;
+    [SerializeField] private float baseSecondsForJoke = 60f;
     [SerializeField] private float secondsForEachJoke = 60f;
+    [SerializeField] private float secondsPerCat = 5f;
     [SerializeField] private GameObject dayEndHolder;
     [SerializeField] private TMP_Text dayEndText;
     [SerializeField] private Button gameEndButton;
@@ -50,10 +53,13 @@ public class ComedianController : MonoBehaviour
     private void StartNewDay(int catCount)
     {
         _currentCatCount = catCount;
+        secondsForEachJoke = baseSecondsForJoke + catCount * secondsPerCat;
         _currentDayOfWeek = (DayOfWeek)(((int)_currentDayOfWeek + 1) % 7);
         dayOfWeekText.text = _currentDayOfWeek.ToString().Substring(0, 3).ToUpper();
         cats = crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
         _currentJokeProgress = 1f;
+        Debug.Log(RuleBook.Instance.GetCorrectJoke());
+        Debug.Log(secondsForEachJoke);
     }
 
     private void Update()
@@ -102,17 +108,18 @@ public class ComedianController : MonoBehaviour
     private void WinGame()
     {
         dayEndText.text = $"Congrats! \n You're a catmedy legend!";
-        _isGameOver = true;
+        //_isGameOver = true;
     }
 
     private void LoseGame()
     {
         dayEndText.text = $"Wow dude! \n Put your material in the litter box!";
-        _isGameOver = true;
+        //_isGameOver = true;
     }
 
     private IEnumerator WinDayCoroutine()
     {
+        _isGameOver = true;
         jokeBook.CloseBook();
         dayEndText.gameObject.SetActive(false);
         dayEndHolder.SetActive(true);
@@ -137,6 +144,7 @@ public class ComedianController : MonoBehaviour
 
     private IEnumerator LoseDayCoroutine()
     {
+        _isGameOver = true;
         jokeBook.CloseBook();
         dayEndText.gameObject.SetActive(false);
         dayEndHolder.SetActive(true);
