@@ -16,7 +16,7 @@ public class CrowdGenerator : MonoBehaviour
 
     public int MaxCatCount => catSeats.Count;
 
-    public void GenerateCats(int catCount, DayOfWeek dayOfWeek)
+    public List<Cat> GenerateCats(int catCount, DayOfWeek dayOfWeek)
     {
         usedCatSeats.Clear();
 
@@ -26,6 +26,8 @@ public class CrowdGenerator : MonoBehaviour
         }
 
         List<CatData> allCatsData = new List<CatData>();
+
+        List<Cat> cats = new List<Cat>();
 
         for (int i = 0; i < catCount; i++)
         {
@@ -43,9 +45,12 @@ public class CrowdGenerator : MonoBehaviour
             usedCatSeats.Add(catSeat);
 
             allCatsData.Add(cat.GetCatData());
+            cats.Add(cat);
         }
 
         RuleBook.Instance.Initialize(new AudienceData(allCatsData, dayOfWeek));
+
+        return cats;
     }
 
     private void Update()

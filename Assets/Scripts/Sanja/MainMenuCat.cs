@@ -51,7 +51,7 @@ public class MainMenuCat : MonoBehaviour
 
         if (catGender == CatGender.Female)
         {
-            gender.sprite = genders[(int)catAge];
+            gender.sprite = genders[0];
         }
     }
     T GetRandomEnumValue<T>()
