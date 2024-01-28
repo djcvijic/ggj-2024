@@ -30,6 +30,11 @@ public class GameplayScaleFixer : MonoBehaviour
         var widthScale = (float)referenceResolution.x / Screen.width;
         var heightScale = (float)referenceResolution.y / Screen.height;
         var localScale = Mathf.Min(widthScale, heightScale) * (1 + ScaleBuffer);
+        if (SystemInfo.deviceModel.ToLower().Contains("samsung"))
+        {
+            localScale /= 0.75f;
+        }
+
         transform.localScale = localScale * _defaultScale;
     }
 }
