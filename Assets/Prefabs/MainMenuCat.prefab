@@ -67,8 +67,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8f85d0f6c79a2c6478b7940375889f09, type: 3}
   genders:
   - {fileID: 21300000, guid: 714b30566e39dcf4baa42ced07b9e33c, type: 3}
-  - {fileID: 21300000, guid: 0fc6cc64f1000be4eaae774006e8f804, type: 3}
-  - {fileID: 21300000, guid: 4106d1958f362e349bafd7cbe04b4d0c, type: 3}
   color: {fileID: 5993476993922425737}
   build: {fileID: 5993476993106831213}
   age: {fileID: 5993476994519220262}
