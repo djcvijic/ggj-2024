@@ -15,5 +15,5 @@ MonoBehaviour:
   audioType: 1
   variants:
   - {fileID: 8300000, guid: af0fa93f0dc8945aea5cfcfa8c80e535, type: 3}
-  defaultVolume: 1
+  defaultVolume: 0.3
   limitBehaviour: 1

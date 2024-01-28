@@ -44,11 +44,13 @@ public class MainMenuController : MonoBehaviour
     {
         if (playerType == PlayerType.Catmedian)
         {
+            PurrfectAudioManager.Instance.SelectComedian();
             commedianButton.gameObject.SetActive(true);
             whispererButton.gameObject.SetActive(false);
         }
         else if (playerType == PlayerType.CatWhisperer)
         {
+            PurrfectAudioManager.Instance.SelectWhisperer();
             commedianButton.gameObject.SetActive(false);
             whispererButton.gameObject.SetActive(true);
         }
@@ -56,22 +58,26 @@ public class MainMenuController : MonoBehaviour
 
     private void OpenSharePopup()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         shareQRImage.gameObject.SetActive(true);
         closeShare.onClick.SetListener(() => CloseSharePopup());
     }
 
     private void CloseSharePopup()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         shareQRImage.gameObject.SetActive(false);
     }
 
     private void OpenCreditsPopup()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         creditsImage.gameObject.SetActive(true);
         closeCredits.onClick.SetListener(() => CloseCreditsPopup());
     }
     private void CloseCreditsPopup()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         creditsImage.gameObject.SetActive(false);
     }
 }

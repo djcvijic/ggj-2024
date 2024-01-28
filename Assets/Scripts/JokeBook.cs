@@ -27,6 +27,7 @@ public class JokeBook : MonoBehaviour
     }
     public void OpenBook()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         _openBookButton.gameObject.SetActive(false);
         _noteObject.SetActive(true);
         _closeBookButton.gameObject.SetActive(true);
@@ -42,6 +43,7 @@ public class JokeBook : MonoBehaviour
 
     private void ShowJoke(int jokeNumber)
     {
+        PurrfectAudioManager.Instance.FlipPage();
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(true);
 
@@ -53,6 +55,7 @@ public class JokeBook : MonoBehaviour
 
     private void CloseJoke()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         _noteObject.SetActive(true);
         _noteWithJokeObject.SetActive(false);
     }
@@ -71,6 +74,7 @@ public class JokeBook : MonoBehaviour
 
     public void CloseBook()
     {
+        PurrfectAudioManager.Instance.FlipPage();
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(false);
         _closeBookButton.gameObject.SetActive(false);
