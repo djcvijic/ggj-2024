@@ -14,7 +14,6 @@ public class ComedianController : MonoBehaviour
 
     [SerializeField] private Button jokeBookButton;
     [SerializeField] private Button exitButton;
-    [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text dayOfWeekText;
     [SerializeField] private CrowdGenerator crowdGenerator;
     [SerializeField] private JokeBook jokeBook;
@@ -23,6 +22,8 @@ public class ComedianController : MonoBehaviour
     [SerializeField] private GameObject dayEndHolder;
     [SerializeField] private TMP_Text dayEndText;
     [SerializeField] private Button gameEndButton;
+    [SerializeField] private Image fill;
+    [SerializeField] private Gradient gradient;
 
     private int _currentCatCount;
     private DayOfWeek _currentDayOfWeek = DateTime.Today.DayOfWeek;
@@ -75,7 +76,9 @@ public class ComedianController : MonoBehaviour
         }
 
         _currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
-        timeSlider.value = _currentJokeProgress;
+        fill.fillAmount = _currentJokeProgress;
+        Color newColor = gradient.Evaluate(_currentJokeProgress);
+        fill.color = newColor;
 
         var musicStateIndex = MusicStateBreakpoints.FindIndex(x => _currentJokeProgress >= x);
         PurrfectAudioManager.Instance.FadeToState(1 + musicStateIndex);
