@@ -19,6 +19,8 @@ public class MainMenuController : MonoBehaviour
         commedianClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.Catmedian));
         whispererClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.CatWhisperer));
         //shareButton.onClick.SetListener(() => OpenSharePopup());
+
+        PurrfectAudioManager.Instance.StartMainMenuMusic();
     }
 
     public void LoadScene(PlayerType playerType)
