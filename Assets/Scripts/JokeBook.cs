@@ -69,7 +69,7 @@ public class JokeBook : MonoBehaviour
         }
     }
 
-    private void CloseBook()
+    public void CloseBook()
     {
         _noteObject.SetActive(false);
         _noteWithJokeObject.SetActive(false);
