@@ -48,8 +48,12 @@ public class PurrfectAudioManager : AudioManager
         StopAudio(mainMenuStart);
         StopAudio(mainMenuLoop);
         _mainMenuMusicPlaying = false;
-        StopCoroutine(_startMainMenuLoopCoroutine);
-        _startMainMenuLoopCoroutine = null;
+
+        if (_startMainMenuLoopCoroutine != null)
+        {
+            StopCoroutine(_startMainMenuLoopCoroutine);
+            _startMainMenuLoopCoroutine = null;
+        }
 
         PlayAudio(levelBase);
         foreach (var state in levelStates)
