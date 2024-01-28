@@ -59,7 +59,7 @@ public class JokeBook : MonoBehaviour
 
     private void TellJoke(int jokeNumber)
     {
-        if(RuleBook.Instance.IsCorrectJoke(jokeNumber))
+        if(RuleBook.Instance.GetCorrectJoke() == jokeNumber)
         {
             _comedianController.WinDay();
         }
