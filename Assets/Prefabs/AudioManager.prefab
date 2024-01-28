@@ -53,3 +53,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0b28fd09075646f6b30a07106f0b013, type: 2}
   - {fileID: 11400000, guid: 63e6279e9e6434ce58c5f8fda3aada33, type: 2}
   - {fileID: 11400000, guid: a3262c050d75d404eab85d6ad67db81e, type: 2}
+  winCheers:
+  - {fileID: 11400000, guid: db6c35869656842ca84df628458b64bf, type: 2}
+  - {fileID: 11400000, guid: 5e6711674854648f983ca9420527c93a, type: 2}
+  - {fileID: 11400000, guid: 1722bece0cceb4840ac061b78a9c50b6, type: 2}
+  loseBoos:
+  - {fileID: 11400000, guid: f21c74bed745c42fab163d7bcda60d09, type: 2}
+  - {fileID: 11400000, guid: 2bc31938713f94c3da252d6bc708b178, type: 2}
+  - {fileID: 11400000, guid: 95beb3070c2a24697a6d10c14db879cb, type: 2}
+  selectComedian: {fileID: 11400000, guid: 3bbadbde7a720429cbe0aab1ce22499d, type: 2}
+  selectWhisperer: {fileID: 11400000, guid: 9b2b3da7e124f4688ae6458bea21858e, type: 2}
+  pageFlip: {fileID: 11400000, guid: 03f58bab058ac4ee5a2e381f94ec806a, type: 2}
+  buttonClick: {fileID: 11400000, guid: 21fa3d40f037e473088cd75fbb5c9dcf, type: 2}
