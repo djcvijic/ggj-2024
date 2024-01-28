@@ -24,6 +24,8 @@ public class MainMenuController : MonoBehaviour
         whispererClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.CatWhisperer));
         shareButton.onClick.SetListener(() => OpenSharePopup());
         creditsButton.onClick.SetListener(() => OpenCreditsPopup());
+
+        PurrfectAudioManager.Instance.StartMainMenuMusic();
     }
 
     public void LoadScene(PlayerType playerType)
