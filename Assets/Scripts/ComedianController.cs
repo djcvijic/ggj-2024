@@ -58,6 +58,8 @@ public class ComedianController : MonoBehaviour
         dayOfWeekText.text = _currentDayOfWeek.ToString().Substring(0, 3).ToUpper();
         cats = crowdGenerator.GenerateCats(_currentCatCount, _currentDayOfWeek);
         _currentJokeProgress = 1f;
+        fill.fillAmount = _currentJokeProgress;
+        fill.color = gradient.Evaluate(_currentJokeProgress);
         Debug.Log(RuleBook.Instance.GetCorrectJoke());
         Debug.Log(secondsForEachJoke);
     }
@@ -83,8 +85,7 @@ public class ComedianController : MonoBehaviour
 
         _currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
         fill.fillAmount = _currentJokeProgress;
-        Color newColor = gradient.Evaluate(_currentJokeProgress);
-        fill.color = newColor;
+        fill.color = gradient.Evaluate(_currentJokeProgress);
 
         var musicStateIndex = MusicStateBreakpoints.FindIndex(x => _currentJokeProgress >= x);
         PurrfectAudioManager.Instance.FadeToState(1 + musicStateIndex);
