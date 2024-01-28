@@ -27,6 +27,7 @@ public class ComedianController : MonoBehaviour
     [SerializeField] private Button gameEndButton;
     [SerializeField] private Image fill;
     [SerializeField] private Gradient gradient;
+    [SerializeField] private Animation blinds;
 
     private int _currentCatCount;
     private DayOfWeek _currentDayOfWeek = DateTime.Today.DayOfWeek;
@@ -131,7 +132,9 @@ public class ComedianController : MonoBehaviour
         {
             StartCoroutine(cats[i].Laugh());
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.8f);
+        blinds.Play();
+        yield return new WaitForSeconds(0.7f);
         dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
         dayEndText.gameObject.SetActive(true);
         if (_currentCatCount >= crowdGenerator.MaxCatCount)
@@ -153,7 +156,9 @@ public class ComedianController : MonoBehaviour
         dayEndHolder.SetActive(true);
         dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0);
         PurrfectAudioManager.Instance.LoseBoo((float)_currentCatCount / crowdGenerator.MaxCatCount);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
+        blinds.Play();
+        yield return new WaitForSeconds(0.75f);
         dayEndHolder.GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
         dayEndText.gameObject.SetActive(true);
         if (_currentCatCount <= 1)
