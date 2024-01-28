@@ -17,6 +17,7 @@ public class PurrfectAudioManager : AudioManager
 
     private int _currentState;
     private bool _mainMenuMusicPlaying;
+    private Coroutine _startMainMenuLoopCoroutine;
 
     public void StartMainMenuMusic()
     {
@@ -30,11 +31,11 @@ public class PurrfectAudioManager : AudioManager
         {
             _mainMenuMusicPlaying = true;
             PlayAudio(mainMenuStart);
-            StartCoroutine(MainMenuMusicLoop());
+            _startMainMenuLoopCoroutine = StartCoroutine(StartMainMenuLoop());
         }
     }
 
-    private IEnumerator MainMenuMusicLoop()
+    private IEnumerator StartMainMenuLoop()
     {
         yield return new WaitForSeconds(mainMenuStart.Variants[0].length);
 
@@ -47,6 +48,8 @@ public class PurrfectAudioManager : AudioManager
         StopAudio(mainMenuStart);
         StopAudio(mainMenuLoop);
         _mainMenuMusicPlaying = false;
+        StopCoroutine(_startMainMenuLoopCoroutine);
+        _startMainMenuLoopCoroutine = null;
 
         PlayAudio(levelBase);
         foreach (var state in levelStates)
