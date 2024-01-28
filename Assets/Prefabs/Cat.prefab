@@ -512,7 +512,6 @@ MonoBehaviour:
   blink2: {fileID: 3899861612812945718}
   anim: {fileID: 4788802834188851103}
   laughMouth: {fileID: 1917650252344743686}
-  blink: {fileID: 4169181151010686791}
 --- !u!111 &4788802834188851103
 Animation:
   m_ObjectHideFlags: 0
