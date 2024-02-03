@@ -1,4 +1,9 @@
+using RuleSystem;
 using System;
+using System.Security.Cryptography;
+using System.Text;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,6 +14,7 @@ public class MainMenuController : MonoBehaviour
     public Button whispererButton;
     public Button commedianClickButton;
     public Button whispererClickButton;
+    public TMP_InputField seedInputField;
     public Button shareButton;
     public Button creditsButton;
     public Image shareQRImage;
@@ -30,6 +36,10 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadScene(PlayerType playerType)
     {
+        var seed = seedInputField.text;
+        byte[] encoded = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(seed));
+        var value = BitConverter.ToUInt32(encoded, 0) % 1000000;
+        RuleBook.Instance.Seed = (int) value;
         if (playerType == PlayerType.Catmedian)
         {
             SceneManager.LoadScene("SceneCommedian");
@@ -47,12 +57,14 @@ public class MainMenuController : MonoBehaviour
             PurrfectAudioManager.Instance.SelectComedian();
             commedianButton.gameObject.SetActive(true);
             whispererButton.gameObject.SetActive(false);
+            seedInputField.gameObject.SetActive(true);
         }
         else if (playerType == PlayerType.CatWhisperer)
         {
             PurrfectAudioManager.Instance.SelectWhisperer();
             commedianButton.gameObject.SetActive(false);
             whispererButton.gameObject.SetActive(true);
+            seedInputField.gameObject.SetActive(true);
         }
     }
 

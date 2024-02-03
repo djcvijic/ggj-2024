@@ -62,8 +62,6 @@ public class ComedianController : MonoBehaviour
         fill.fillAmount = _currentJokeProgress;
         fill.color = gradient.Evaluate(_currentJokeProgress);
         _isGameOver = false;
-        Debug.Log(RuleBook.Instance.GetCorrectJoke());
-        Debug.Log(secondsForEachJoke);
     }
 
     private void Update()

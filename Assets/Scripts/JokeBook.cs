@@ -20,6 +20,7 @@ public class JokeBook : MonoBehaviour
     [SerializeField] private ComedianController _comedianController;
 
     private JokeBookConfig _config;
+    private List<PageConfig> newPages = new List<PageConfig>();
 
     private void Start()
     {
@@ -62,7 +63,7 @@ public class JokeBook : MonoBehaviour
 
     private void TellJoke(int jokeNumber)
     {
-        if(RuleBook.Instance.GetCorrectJoke() == jokeNumber)
+        if (RuleBook.Instance.GetCorrectJoke(RuleBook.Instance.Seed) == jokeNumber)
         {
             _comedianController.WinDay();
         }
