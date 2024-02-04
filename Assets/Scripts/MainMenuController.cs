@@ -38,7 +38,7 @@ public class MainMenuController : MonoBehaviour
             return;
         }
 
-        RuleBook.Instance.ShuffleRuleBook(seedInputField.text);
+        RuleBook.Instance.Shuffle(seedInputField.text);
         if (playerType == PlayerType.Catmedian)
         {
             SceneManager.LoadScene("SceneCommedian");

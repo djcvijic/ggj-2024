@@ -52,7 +52,7 @@ namespace RuleSystem
         /// Shuffle rules and instructions around based on a seed.
         /// </summary>
         /// <param name="seed"></param>
-        public void ShuffleRuleBook(string seed)
+        public void Shuffle(string seed)
         {
             var allRules = Config.pages.SelectMany(x => x.rules).ToList();
             var allTexts = allRules.Select(x => x.text).ToList();
