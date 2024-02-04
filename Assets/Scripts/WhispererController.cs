@@ -1,11 +1,6 @@
 using RuleSystem;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,16 +23,12 @@ public class WhispererController : MonoBehaviour
     [SerializeField] private GameObject legendImagePrefab;
 
     private List<GameObject> rulesList = new List<GameObject>();
-    private List<PageConfig> newPages = new List<PageConfig>();
     void Start()
     {
         backButton.onClick.SetListener(UnloadPage);
         closeButton.onClick.SetListener(BackToMainMenu);
 
-        newPages = RuleBook.Instance.RandomizeRules(RuleBook.Instance.Seed);
-        Debug.LogError(newPages.Count());
-
-        for (int i = 0; i < 14; i++)
+        for (int i = 0; i < RuleBook.PageCount; i++)
         {
             GameObject pageSelection = Instantiate(pageSelectionPrefab, pageSelectionParent);
             int pageNumber = i + 1;
@@ -53,7 +44,7 @@ public class WhispererController : MonoBehaviour
     private void LoadPage(int pageNumber)
     {
         PurrfectAudioManager.Instance.FlipPage();
-        var pageText = newPages[pageNumber-1].GetPageText();
+        var pageText = RuleBook.Instance.GetPageText(pageNumber);
         var rules = pageText.rules;
         var finalInstruction = pageText.elseInstruction;
 

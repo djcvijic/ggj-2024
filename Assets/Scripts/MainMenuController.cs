@@ -1,9 +1,5 @@
 using RuleSystem;
-using System;
-using System.Security.Cryptography;
-using System.Text;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -36,10 +32,7 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadScene(PlayerType playerType)
     {
-        var seed = seedInputField.text;
-        byte[] encoded = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(seed));
-        var value = BitConverter.ToUInt32(encoded, 0) % 1000000;
-        RuleBook.Instance.Seed = (int) value;
+        RuleBook.Instance.ShuffleRuleBook(seedInputField.text);
         if (playerType == PlayerType.Catmedian)
         {
             SceneManager.LoadScene("SceneCommedian");

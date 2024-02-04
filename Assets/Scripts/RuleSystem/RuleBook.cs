@@ -1,18 +1,21 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace RuleSystem
 {
     public class RuleBook : Singleton<RuleBook>
     {
+        public const int PageCount = 14;
+        private const int RulesPerPage = 4;
+
         private RuleBookConfig _config;
+        private List<Page> _shuffledPages;
         private AudienceData _audienceData;
 
         private RuleBookConfig Config => _config ??=
             JsonConvert.DeserializeObject<RuleBookConfig>(Resources.Load<TextAsset>("ruleBook").text);
-
-        public int Seed { get; set; }
 
         /// <summary>
         /// Call with data about each new audience at the start of each day.
@@ -27,17 +30,11 @@ namespace RuleSystem
         /// Returns the correct joke [1..70].
         /// </summary>
         /// <returns></returns>
-        public int GetCorrectJoke(int seed)
+        public int GetCorrectJoke()
         {
-            var randomizedPages = RandomizeRules(seed);
             var currentPageNumber = _audienceData.cats.Count;
-            var currentPage = randomizedPages[currentPageNumber-1];
+            var currentPage = _shuffledPages[currentPageNumber - 1];
             return currentPage.GetCorrectJoke(_audienceData);
-        }
-
-        public int GetAudienceCount()
-        {
-            return _audienceData.cats.Count;
         }
 
         /// <summary>
@@ -47,58 +44,48 @@ namespace RuleSystem
         /// <returns></returns>
         public PageText GetPageText(int pageNumber)
         {
-            var pageConfig = Config.pages[pageNumber - 1];
+            var pageConfig = _shuffledPages[pageNumber - 1];
             return pageConfig.GetPageText();
         }
 
-        public List<PageConfig> RandomizeRules(int seed)
+        /// <summary>
+        /// Shuffle rules and instructions around based on a seed.
+        /// </summary>
+        /// <param name="seed"></param>
+        public void ShuffleRuleBook(string seed)
         {
-            List<PageConfig> newPages = new List<PageConfig>();
-            List<List<ConditionConfig>> conditionConfigs = new List<List<ConditionConfig>>();
-            List<string> conditionTexts = new List<string>();
-            List<InstructionConfig> instructions = new List<InstructionConfig>();
-            List<InstructionConfig> finalInstructions = new List<InstructionConfig>();
+            var allRules = Config.pages.SelectMany(x => x.rules).ToList();
+            var allTexts = allRules.Select(x => x.text).ToList();
+            var allConditions = allRules.Select(x => x.conditions).ToList();
+            var allInstructions = allRules.Select(x => x.instruction).ToList();
+            allInstructions.AddRange(Config.pages.Select(x => x.elseInstruction).ToList());
 
-            for (int i = 0; i < 14; i++)
+            allTexts.Shuffle(seed);
+            allConditions.Shuffle(seed);
+            allInstructions.Shuffle($"{seed}0");
+
+            _shuffledPages = ComposePages(allTexts, allConditions, allInstructions);
+        }
+
+        private static List<Page> ComposePages(
+            List<string> ruleTexts,
+            List<List<ConditionConfig>> conditionLists,
+            List<InstructionConfig> instructions)
+        {
+            var newPages = new List<Page>();
+            for (var pageIndex = 0; pageIndex < PageCount; pageIndex++)
             {
-                var pageConfig = Config.pages[i];
-                var pageRules = pageConfig.rules;
-                var pageConditions = pageRules.ConvertAll(x => x.conditions);
-                var pageConditionTexts = pageRules.ConvertAll(x => x.text);
-                var pageInstructions = pageRules.ConvertAll(x => x.instruction);
-                var finalInstruction = pageConfig.elseInstruction;
+                var newRules = new List<Rule>();
+                for (var ruleIndex = 0; ruleIndex < RulesPerPage; ruleIndex++)
+                {
+                    var newText = ruleTexts[pageIndex * RulesPerPage + ruleIndex];
+                    var newConditions = conditionLists[pageIndex * RulesPerPage + ruleIndex];
+                    var newInstruction = instructions[pageIndex * (RulesPerPage + 1) + ruleIndex];
+                    newRules.Add(new Rule(newText, newConditions, newInstruction));
+                }
 
-                conditionConfigs.AddRange(pageConditions);
-                conditionTexts.AddRange(pageConditionTexts);
-                instructions.AddRange(pageInstructions);
-                finalInstructions.Add(finalInstruction);
-            }
-
-            List<RuleConfig> newRules = new List<RuleConfig>();
-            for (int i = 0; i < 56; i++)
-            {
-                Random.seed = seed;
-
-                int RandomIndexForCondition = Random.Range(0, conditionConfigs.Count);
-                var newRuleConditionConfigs = conditionConfigs[RandomIndexForCondition];
-                var newRuleConditionText = conditionTexts[RandomIndexForCondition];
-                conditionConfigs.RemoveAt(RandomIndexForCondition);
-                conditionTexts.RemoveAt(RandomIndexForCondition);
-
-                Random.seed = seed;
-
-                int RandomIndexForInstruction = Random.Range(0, instructions.Count);
-                var newRuleInstruction = instructions[RandomIndexForInstruction];
-                instructions.RemoveAt(RandomIndexForInstruction);
-
-                var newRuleConfig = new RuleConfig(newRuleConditionText, newRuleConditionConfigs, newRuleInstruction);
-                newRules.Add(newRuleConfig);
-            }
-
-            for (int i = 0; i < 14; i++)
-            {
-                var newPage = new PageConfig(newRules.GetRange(i * 4, 4), finalInstructions[i]);
-                newPages.Add(newPage);
+                var newElseInstruction = instructions[pageIndex * (RulesPerPage + 1) + RulesPerPage];
+                newPages.Add(new Page(newRules, newElseInstruction));
             }
 
             return newPages;

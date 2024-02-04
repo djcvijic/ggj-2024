@@ -8,8 +8,8 @@ public class JokeBookConfig
 {
     [JsonProperty] public readonly List<JokeConfig> jokes;
 
-    public JokeConfig GetJokeConfig(int index)
+    public JokeConfig GetJokeConfig(int jokeNumber)
     {
-        return jokes[index];
+        return jokes[jokeNumber - 1];
     }
 }
