@@ -32,6 +32,12 @@ public class MainMenuController : MonoBehaviour
 
     public void LoadScene(PlayerType playerType)
     {
+        if (!int.TryParse(seedInputField.text, out var seed) || seed is < 100 or >= 1000)
+        {
+            seedInputField.text = "";
+            return;
+        }
+
         RuleBook.Instance.ShuffleRuleBook(seedInputField.text);
         if (playerType == PlayerType.Catmedian)
         {
@@ -51,6 +57,8 @@ public class MainMenuController : MonoBehaviour
             commedianButton.gameObject.SetActive(true);
             whispererButton.gameObject.SetActive(false);
             seedInputField.gameObject.SetActive(true);
+            seedInputField.text = Random.Range(100, 1000).ToString();
+            seedInputField.readOnly = true;
         }
         else if (playerType == PlayerType.CatWhisperer)
         {
@@ -58,6 +66,8 @@ public class MainMenuController : MonoBehaviour
             commedianButton.gameObject.SetActive(false);
             whispererButton.gameObject.SetActive(true);
             seedInputField.gameObject.SetActive(true);
+            seedInputField.text = "";
+            seedInputField.readOnly = false;
         }
     }
 
