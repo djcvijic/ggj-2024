@@ -60,9 +60,10 @@ namespace RuleSystem
             var allInstructions = allRules.Select(x => x.instruction).ToList();
             allInstructions.AddRange(Config.pages.Select(x => x.elseInstruction).ToList());
 
+            var instructionsSeed = $"-{seed}";
             allTexts.Shuffle(seed);
             allConditions.Shuffle(seed);
-            allInstructions.Shuffle($"{seed}0");
+            allInstructions.Shuffle(instructionsSeed);
 
             _shuffledPages = ComposePages(allTexts, allConditions, allInstructions);
         }
