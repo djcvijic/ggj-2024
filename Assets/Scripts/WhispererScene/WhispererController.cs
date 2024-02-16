@@ -28,17 +28,27 @@ public class WhispererController : MonoBehaviour
         backButton.onClick.SetListener(UnloadPage);
         closeButton.onClick.SetListener(BackToMainMenu);
 
-        for (int i = 0; i < RuleBook.PageCount; i++)
+        for (var i = 0; i < RuleBook.PageCount; i++)
         {
-            GameObject pageSelection = Instantiate(pageSelectionPrefab, pageSelectionParent);
-            int pageNumber = i + 1;
-            pageSelection.GetComponentInChildren<TextMeshProUGUI>().text = i==0 ? pageNumber + ". " + "Rules for " + pageNumber + " cat" : pageNumber + ". " + "Rules for " + pageNumber + " cats";
+            var pageNumber = i + 1;
+            var pageSelection = InstantiatePageSelection(pageNumber, pageSelectionParent, true);
             pageSelection.GetComponent<Button>().onClick.SetListener(() => LoadPage(pageNumber));
         }
+
         GameObject tableOfContents = Instantiate(pageSelectionPrefab, pageSelectionParent);
         tableOfContents.GetComponentInChildren<TextMeshProUGUI>().text = "15. Table Of Contents";
         tableOfContents.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(128, 35, 17, 255);
         tableOfContents.GetComponent<Button>().onClick.SetListener(() => LoadTableOfContentsPage());
+    }
+
+    private GameObject InstantiatePageSelection(int pageNumber, Transform parent, bool includePageNumber)
+    {
+        var pageSelection = Instantiate(pageSelectionPrefab, parent);
+        var prefix = includePageNumber ? $"{pageNumber}. " : "";
+        pageSelection.GetComponentInChildren<TextMeshProUGUI>().text = pageNumber == 1
+            ? $"{prefix}Rules for {pageNumber} cat"
+            : $"{prefix}Rules for {pageNumber} cats";
+        return pageSelection;
     }
 
     private void LoadPage(int pageNumber)
@@ -47,6 +57,9 @@ public class WhispererController : MonoBehaviour
         var pageText = RuleBook.Instance.GetPageText(pageNumber);
         var rules = pageText.rules;
         var finalInstruction = pageText.elseInstruction;
+
+        var pageSelection = InstantiatePageSelection(pageNumber, rulesParent, false);
+        rulesList.Add(pageSelection);
 
         for(int i = 0; i < rules.Count; i++)
         {
