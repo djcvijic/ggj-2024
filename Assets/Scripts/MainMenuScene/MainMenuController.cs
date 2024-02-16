@@ -41,11 +41,11 @@ public class MainMenuController : MonoBehaviour
         RuleBook.Instance.Shuffle(seedInputField.text);
         if (playerType == PlayerType.Catmedian)
         {
-            SceneManager.LoadScene("SceneCommedian");
+            PurrfectSceneManager.LoadScene(SceneName.ComedianScene);
         }
         else if (playerType == PlayerType.CatWhisperer)
         {
-            SceneManager.LoadScene("SceneWhisperer");
+            PurrfectSceneManager.LoadScene(SceneName.WhispererScene);
         }
     }
 

@@ -48,7 +48,7 @@ public class ComedianController : MonoBehaviour
 
     private static void BackToMainMenu()
     {
-        SceneManager.LoadScene("SceneMainMenu");
+        PurrfectSceneManager.LoadScene(SceneName.MainMenuScene);
     }
 
     private void StartNewDay(int catCount)

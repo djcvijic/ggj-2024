@@ -132,6 +132,6 @@ public class WhispererController : MonoBehaviour
 
     private void BackToMainMenu()
     {
-        SceneManager.LoadScene("SceneMainMenu");
+        PurrfectSceneManager.LoadScene(SceneName.MainMenuScene);
     }
 }
