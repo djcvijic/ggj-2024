@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 47657907}
   - component: {fileID: 47657906}
   - component: {fileID: 47657905}
+  - component: {fileID: 47657909}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -219,13 +220,36 @@ RectTransform:
   - {fileID: 1980173381}
   - {fileID: 1013524953}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &47657909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47657904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e0f4bd807d802448b8447f5e7150f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 1980173382}
+  closeButton: {fileID: 1013524954}
+  rulesScroll: {fileID: 239898390}
+  rulesPrefab: {fileID: 1340166585429766152, guid: 1b7de14e40230f644852fa4f411607b6, type: 3}
+  rulesParent: {fileID: 826988884}
+  pagesScroll: {fileID: 664912716}
+  pageSelectionPrefab: {fileID: 3152673997021677096, guid: f2302afe91a949948a4f6da5f0848913, type: 3}
+  pageSelectionParent: {fileID: 1349081918}
+  catHolderPrefab: {fileID: 8757507165748460889, guid: 099ba3d2653c3b54dbf0fdff7708f45d, type: 3}
+  catPrefab: {fileID: 1222608852166698397, guid: ab9d22966546442418169c0badcb20da, type: 3}
+  legendImagePrefab: {fileID: 1340166585429766152, guid: c7e636a66c9a53942afcd9c21f313e88, type: 3}
 --- !u!1 &104222843
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +959,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013524952
 GameObject:
@@ -1176,61 +1200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349081917}
   m_CullTransparentMesh: 1
---- !u!1 &1874667983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1874667985}
-  - component: {fileID: 1874667984}
-  m_Layer: 0
-  m_Name: WhispererController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1874667984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874667983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e0f4bd807d802448b8447f5e7150f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backButton: {fileID: 1980173382}
-  closeButton: {fileID: 1013524954}
-  rulesScroll: {fileID: 239898390}
-  rulesPrefab: {fileID: 1340166585429766152, guid: 1b7de14e40230f644852fa4f411607b6, type: 3}
-  rulesParent: {fileID: 826988884}
-  pagesScroll: {fileID: 664912716}
-  pageSelectionPrefab: {fileID: 3152673997021677096, guid: f2302afe91a949948a4f6da5f0848913, type: 3}
-  pageSelectionParent: {fileID: 1349081918}
-  catHolderPrefab: {fileID: 8757507165748460889, guid: 099ba3d2653c3b54dbf0fdff7708f45d, type: 3}
-  catPrefab: {fileID: 1222608852166698397, guid: ab9d22966546442418169c0badcb20da, type: 3}
-  legendImagePrefab: {fileID: 1340166585429766152, guid: c7e636a66c9a53942afcd9c21f313e88, type: 3}
---- !u!4 &1874667985
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874667983}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09150293, y: -0.13095595, z: 90.01709}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900278796
 GameObject:
   m_ObjectHideFlags: 0

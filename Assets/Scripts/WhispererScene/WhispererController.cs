@@ -76,6 +76,9 @@ public class WhispererController : MonoBehaviour
         backButton.gameObject.SetActive(true);
         pagesScroll.SetActive(false);
         rulesScroll.SetActive(true);
+
+        // reset to top
+        rulesScroll.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
     }
 
     private void LoadTableOfContentsPage()
