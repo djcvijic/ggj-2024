@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class CrowdGenerator : MonoBehaviour
 {
-    [SerializeField] private Cat catPrefab;
+    [SerializeField] private AudienceCat catPrefab;
     [SerializeField] private List<Seat> catSeats;
     [SerializeField] private Transform crowd;
 
@@ -16,7 +16,7 @@ public class CrowdGenerator : MonoBehaviour
 
     public int MaxCatCount => catSeats.Count;
 
-    public List<Cat> GenerateCats(int catCount, DayOfWeek dayOfWeek)
+    public List<AudienceCat> GenerateCats(int catCount, DayOfWeek dayOfWeek)
     {
         usedCatSeats.Clear();
 
@@ -27,12 +27,12 @@ public class CrowdGenerator : MonoBehaviour
 
         List<CatData> allCatsData = new List<CatData>();
 
-        List<Cat> cats = new List<Cat>();
+        List<AudienceCat> cats = new List<AudienceCat>();
 
         for (int i = 0; i < catCount; i++)
         {
-            Cat cat = Instantiate(catPrefab, crowd);
-            cat.CreateCat();
+            AudienceCat cat = Instantiate(catPrefab, crowd);
+            cat.Initialize();
 
             catSeat = catSeats[Random.Range(0, catSeats.Count)];
 

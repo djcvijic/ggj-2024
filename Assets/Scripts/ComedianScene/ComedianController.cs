@@ -34,7 +34,7 @@ public class ComedianController : MonoBehaviour
     private float _currentJokeProgress;
     private bool _isGameOver;
 
-    private List<Cat> cats = new List<Cat>();
+    private List<AudienceCat> cats = new List<AudienceCat>();
 
     private void Start()
     {

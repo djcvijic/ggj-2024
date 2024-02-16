@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [SerializeField] private Cat comedianCat;
+    [SerializeField] private Cat whispererCat;
     public Button commedianButton;
     public Button whispererButton;
     public Button commedianClickButton;
@@ -20,6 +22,8 @@ public class MainMenuController : MonoBehaviour
 
     public void Start()
     {
+        comedianCat.Initialize();
+        whispererCat.Initialize();
         commedianButton.onClick.SetListener(() => LoadScene(PlayerType.Catmedian));
         whispererButton.onClick.SetListener(() => LoadScene(PlayerType.CatWhisperer));
         commedianClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.Catmedian));
