@@ -49,8 +49,8 @@ public static class ScenesMenu
         EditorSceneManager.OpenScene($"Assets/Scenes/{SceneName.MainMenuScene.ToString()}.unity");
     }
 
-    [MenuItem("Scenes/PlayScene")]
-    private static void OpenPlayScene()
+    [MenuItem("Scenes/WhispererScene")]
+    private static void OpenWhispererScene()
     {
         EditorSceneManager.OpenScene($"Assets/Scenes/{SceneName.WhispererScene.ToString()}.unity");
     }
