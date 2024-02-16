@@ -1,5 +1,5 @@
+using System;
 using Newtonsoft.Json;
-using RuleSystem;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,9 +15,10 @@ public class JokeBook : MonoBehaviour
     [SerializeField] private GameObject _noteObject;
     [SerializeField] private GameObject _noteWithJokeObject;
     [SerializeField] private TextMeshProUGUI _jokeText;
-    [SerializeField] private ComedianController _comedianController;
 
     private JokeBookConfig _config;
+
+    public event Action<int> JokeTold;
 
     private void Start()
     {
@@ -60,14 +61,7 @@ public class JokeBook : MonoBehaviour
 
     private void TellJoke(int jokeNumber)
     {
-        if (RuleBook.Instance.GetCorrectJoke() == jokeNumber)
-        {
-            _comedianController.WinDay();
-        }
-        else
-        {
-            _comedianController.LoseDay();
-        }
+        JokeTold?.Invoke(jokeNumber);
     }
 
     public void CloseBook()

@@ -1,10 +1,9 @@
-using RuleSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RuleSystem;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ComedianController : MonoBehaviour
@@ -44,6 +43,20 @@ public class ComedianController : MonoBehaviour
         StartNewDay(startCatCount);
 
         PurrfectAudioManager.Instance.StartLevelMusic();
+
+        jokeBook.JokeTold += OnJokeTold;
+    }
+
+    private void OnDestroy()
+    {
+        jokeBook.JokeTold -= OnJokeTold;
+    }
+
+    private void OnJokeTold(int jokeNumber)
+    {
+        var isCorrect = RuleBook.Instance.GetCorrectJoke() == jokeNumber;
+        if (isCorrect) WinDay();
+        else LoseDay();
     }
 
     private static void BackToMainMenu()

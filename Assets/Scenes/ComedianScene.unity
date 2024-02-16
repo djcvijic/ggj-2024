@@ -335,129 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
---- !u!1 &180518690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 180518691}
-  - component: {fileID: 180518692}
-  m_Layer: 0
-  m_Name: JokeBookController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &180518691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180518690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 588293769}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &180518692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180518690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f629db5b280f51468e213c2ae4857ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tellJokeButton: {fileID: 1622025715}
-  _openBookButton: {fileID: 833615}
-  _closeBookButton: {fileID: 1108784895}
-  _backButton: {fileID: 1122151937}
-  _jokeNumberButtons:
-  - {fileID: 6473518693495128558}
-  - {fileID: 7155536888968009631}
-  - {fileID: 6039409407095205591}
-  - {fileID: 1384317988822318296}
-  - {fileID: 2193268138505411808}
-  - {fileID: 1093544555849796840}
-  - {fileID: 7389477512951796156}
-  - {fileID: 2744711648262124646}
-  - {fileID: 8118306317768940579}
-  - {fileID: 8566000247317917928}
-  - {fileID: 2631536302214428193}
-  - {fileID: 5243447618606233123}
-  - {fileID: 1835637530456980772}
-  - {fileID: 6689014345637973401}
-  - {fileID: 7209516553487199359}
-  - {fileID: 3046054057808855633}
-  - {fileID: 5118227371313598042}
-  - {fileID: 7680591874756492403}
-  - {fileID: 5855474274366786441}
-  - {fileID: 3997720864406050153}
-  - {fileID: 2649567321124971496}
-  - {fileID: 2592640491457358670}
-  - {fileID: 5370029685516112553}
-  - {fileID: 5070585220056763480}
-  - {fileID: 2263888503848078008}
-  - {fileID: 1108623654337863097}
-  - {fileID: 2530466635459978270}
-  - {fileID: 3728277223214032055}
-  - {fileID: 2475066174283804385}
-  - {fileID: 1032302414412994948}
-  - {fileID: 6552374374343595344}
-  - {fileID: 1992071011531250675}
-  - {fileID: 9031333183022120431}
-  - {fileID: 7860733213729234083}
-  - {fileID: 4652100670295244188}
-  - {fileID: 7204199303971402533}
-  - {fileID: 6783620748672766941}
-  - {fileID: 3790153378699653128}
-  - {fileID: 3717612341505728861}
-  - {fileID: 3603173017486878846}
-  - {fileID: 8089886285047265268}
-  - {fileID: 2226782363604701366}
-  - {fileID: 5386528148765376839}
-  - {fileID: 1982270235540219927}
-  - {fileID: 1852721397544864741}
-  - {fileID: 320698512096610575}
-  - {fileID: 4156215513975489569}
-  - {fileID: 932508483554851969}
-  - {fileID: 4181927651285829869}
-  - {fileID: 7512938367691183554}
-  - {fileID: 8209583705829887058}
-  - {fileID: 5767399277230438751}
-  - {fileID: 8835755152564648034}
-  - {fileID: 8054679640792297408}
-  - {fileID: 2452178602492250635}
-  - {fileID: 4802525518038773447}
-  - {fileID: 5756254290508803048}
-  - {fileID: 3048353318886763240}
-  - {fileID: 3311750207153812129}
-  - {fileID: 9082370768517598727}
-  - {fileID: 2883180389965291655}
-  - {fileID: 582594262784649284}
-  - {fileID: 5907644411319591739}
-  - {fileID: 1253327123510227443}
-  - {fileID: 8010087562869017397}
-  - {fileID: 344399082387344168}
-  - {fileID: 2753300046958480557}
-  - {fileID: 2678655541450653330}
-  - {fileID: 1983254815909714647}
-  - {fileID: 8455915906279265317}
-  _noteObject: {fileID: 6551707918221239713}
-  _noteWithJokeObject: {fileID: 6551707919047849535}
-  _jokeText: {fileID: 1840743843830958508}
-  _comedianController: {fileID: 1126476192}
 --- !u!1 &235656311
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,39 +854,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rowNumber: 2
   seatNumber: 4
---- !u!1 &588293767
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 588293769}
-  m_Layer: 0
-  m_Name: UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &588293769
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588293767}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0026588, y: -1.376875, z: -9.687709}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 683844099}
-  - {fileID: 180518691}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617113192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,8 +1036,9 @@ GameObject:
   - component: {fileID: 683844102}
   - component: {fileID: 683844101}
   - component: {fileID: 683844100}
+  - component: {fileID: 683844103}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1218,8 +1063,8 @@ RectTransform:
   - {fileID: 1797096678}
   - {fileID: 617113193}
   - {fileID: 1065375187}
-  m_Father: {fileID: 588293769}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1287,6 +1132,97 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!114 &683844103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683844098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f629db5b280f51468e213c2ae4857ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tellJokeButton: {fileID: 1622025715}
+  _openBookButton: {fileID: 833615}
+  _closeBookButton: {fileID: 1108784895}
+  _backButton: {fileID: 1122151937}
+  _jokeNumberButtons:
+  - {fileID: 6473518693495128558}
+  - {fileID: 7155536888968009631}
+  - {fileID: 6039409407095205591}
+  - {fileID: 1384317988822318296}
+  - {fileID: 2193268138505411808}
+  - {fileID: 1093544555849796840}
+  - {fileID: 7389477512951796156}
+  - {fileID: 2744711648262124646}
+  - {fileID: 8118306317768940579}
+  - {fileID: 8566000247317917928}
+  - {fileID: 2631536302214428193}
+  - {fileID: 5243447618606233123}
+  - {fileID: 1835637530456980772}
+  - {fileID: 6689014345637973401}
+  - {fileID: 7209516553487199359}
+  - {fileID: 3046054057808855633}
+  - {fileID: 5118227371313598042}
+  - {fileID: 7680591874756492403}
+  - {fileID: 5855474274366786441}
+  - {fileID: 3997720864406050153}
+  - {fileID: 2649567321124971496}
+  - {fileID: 2592640491457358670}
+  - {fileID: 5370029685516112553}
+  - {fileID: 5070585220056763480}
+  - {fileID: 2263888503848078008}
+  - {fileID: 1108623654337863097}
+  - {fileID: 2530466635459978270}
+  - {fileID: 3728277223214032055}
+  - {fileID: 2475066174283804385}
+  - {fileID: 1032302414412994948}
+  - {fileID: 6552374374343595344}
+  - {fileID: 1992071011531250675}
+  - {fileID: 9031333183022120431}
+  - {fileID: 7860733213729234083}
+  - {fileID: 4652100670295244188}
+  - {fileID: 7204199303971402533}
+  - {fileID: 6783620748672766941}
+  - {fileID: 3790153378699653128}
+  - {fileID: 3717612341505728861}
+  - {fileID: 3603173017486878846}
+  - {fileID: 8089886285047265268}
+  - {fileID: 2226782363604701366}
+  - {fileID: 5386528148765376839}
+  - {fileID: 1982270235540219927}
+  - {fileID: 1852721397544864741}
+  - {fileID: 320698512096610575}
+  - {fileID: 4156215513975489569}
+  - {fileID: 932508483554851969}
+  - {fileID: 4181927651285829869}
+  - {fileID: 7512938367691183554}
+  - {fileID: 8209583705829887058}
+  - {fileID: 5767399277230438751}
+  - {fileID: 8835755152564648034}
+  - {fileID: 8054679640792297408}
+  - {fileID: 2452178602492250635}
+  - {fileID: 4802525518038773447}
+  - {fileID: 5756254290508803048}
+  - {fileID: 3048353318886763240}
+  - {fileID: 3311750207153812129}
+  - {fileID: 9082370768517598727}
+  - {fileID: 2883180389965291655}
+  - {fileID: 582594262784649284}
+  - {fileID: 5907644411319591739}
+  - {fileID: 1253327123510227443}
+  - {fileID: 8010087562869017397}
+  - {fileID: 344399082387344168}
+  - {fileID: 2753300046958480557}
+  - {fileID: 2678655541450653330}
+  - {fileID: 1983254815909714647}
+  - {fileID: 8455915906279265317}
+  _noteObject: {fileID: 6551707918221239713}
+  _noteWithJokeObject: {fileID: 6551707919047849535}
+  _jokeText: {fileID: 1840743843830958508}
+  _comedianController: {fileID: 1126476192}
 --- !u!1 &756070129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,7 +1877,7 @@ MonoBehaviour:
   exitButton: {fileID: 1797096679}
   dayOfWeekText: {fileID: 2135284914}
   crowdGenerator: {fileID: 2093046860}
-  jokeBook: {fileID: 180518692}
+  jokeBook: {fileID: 683844103}
   startCatCount: 3
   baseSecondsForJoke: 45
   secondsForEachJoke: 60
