@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SeedUI : MonoBehaviour
+public class SeedPopup : MonoBehaviour
 {
     [SerializeField] private TMP_Text comedianText;
     [SerializeField] private TMP_Text whispererText;
@@ -12,7 +12,7 @@ public class SeedUI : MonoBehaviour
     [SerializeField] private Button whispererPlayButton;
     [SerializeField] private Button backButton;
 
-    public void Initialize(string seed, PlayerType playerType, UnityAction onPlayClicked)
+    public void Open(string seed, PlayerType playerType, UnityAction onPlayClicked)
     {
         gameObject.SetActive(true);
         comedianText.gameObject.SetActive(playerType == PlayerType.Catmedian);
@@ -23,10 +23,10 @@ public class SeedUI : MonoBehaviour
         whispererPlayButton.onClick.SetListener(onPlayClicked);
         comedianPlayButton.gameObject.SetActive(playerType == PlayerType.Catmedian);
         whispererPlayButton.gameObject.SetActive(playerType == PlayerType.CatWhisperer);
-        backButton.onClick.SetListener(Deactivate);
+        backButton.onClick.SetListener(Close);
     }
 
-    public void Deactivate()
+    public void Close()
     {
         gameObject.SetActive(false);
     }

@@ -1,5 +1,6 @@
 using RuleSystem;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
@@ -13,7 +14,7 @@ public class MainMenuController : MonoBehaviour
     public Button whispererButton;
     public Button commedianClickButton;
     public Button whispererClickButton;
-    public SeedUI seedUI;
+    [FormerlySerializedAs("seedUI")] public SeedPopup seedPopup;
     public Button shareButton;
     public Button creditsButton;
     public Image shareQRImage;
@@ -29,7 +30,7 @@ public class MainMenuController : MonoBehaviour
         whispererClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.CatWhisperer));
         commedianButton.onClick.SetListener(() => PlayCatButton(PlayerType.Catmedian));
         whispererButton.onClick.SetListener(() => PlayCatButton(PlayerType.CatWhisperer));
-        seedUI.Deactivate();
+        seedPopup.Close();
         shareButton.onClick.SetListener(ToggleSharePopup);
         creditsButton.onClick.SetListener(ToggleCreditsPopup);
 
@@ -57,12 +58,12 @@ public class MainMenuController : MonoBehaviour
         var seed = playerType == PlayerType.Catmedian
             ? Random.Range(MinSeed, MaxSeed + 1).ToString()
             : "";
-        seedUI.Initialize(seed, playerType, () => LoadScene(playerType));
+        seedPopup.Open(seed, playerType, () => LoadScene(playerType));
     }
 
     private void LoadScene(PlayerType playerType)
     {
-        var seedText = seedUI.GetSeed();
+        var seedText = seedPopup.GetSeed();
         if (!int.TryParse(seedText, out var seed) || seed is < MinSeed or > MaxSeed)
         {
             // TODO cvile: some fail alert for the player

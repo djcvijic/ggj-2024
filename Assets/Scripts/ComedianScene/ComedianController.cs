@@ -27,17 +27,19 @@ public class ComedianController : MonoBehaviour
     [SerializeField] private Image fill;
     [SerializeField] private Gradient gradient;
     [SerializeField] private Animation blinds;
+    [SerializeField] private AlertPopup alert;
 
     private int _currentCatCount;
     private DayOfWeek _currentDayOfWeek = DateTime.Today.DayOfWeek;
     private float _currentJokeProgress;
     private bool _isGameOver;
+    private bool _timePaused;
 
     private List<AudienceCat> cats = new List<AudienceCat>();
 
     private void Start()
     {
-        exitButton.onClick.SetListener(BackToMainMenu);
+        exitButton.onClick.SetListener(AreYouSure);
         gameEndButton.onClick.SetListener(BackToMainMenu);
         jokeBookButton.onClick.SetListener(jokeBook.OpenBook);
         StartNewDay(startCatCount);
@@ -45,6 +47,17 @@ public class ComedianController : MonoBehaviour
         PurrfectAudioManager.Instance.StartLevelMusic();
 
         jokeBook.JokeTold += OnJokeTold;
+        alert.Close();
+    }
+
+    private void AreYouSure()
+    {
+        _timePaused = true;
+        alert.Open("Back to main menu? You will lose your progress!", confirm =>
+        {
+            _timePaused = false;
+            if (confirm) BackToMainMenu();
+        });
     }
 
     private void OnDestroy()
@@ -96,7 +109,9 @@ public class ComedianController : MonoBehaviour
             return;
         }
 
-        _currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
+        if (!_timePaused)
+            _currentJokeProgress -= Time.deltaTime / secondsForEachJoke;
+
         fill.fillAmount = _currentJokeProgress;
         fill.color = gradient.Evaluate(_currentJokeProgress);
 
