@@ -18,12 +18,11 @@ public class JokeBook : MonoBehaviour
 
     private JokeBookConfig _config;
 
+    private JokeBookConfig Config =>
+        _config ??= JsonConvert.DeserializeObject<JokeBookConfig>(Resources.Load<TextAsset>("jokeBook").text);
+
     public event Action<int> JokeTold;
 
-    private void Start()
-    {
-        _config ??= JsonConvert.DeserializeObject<JokeBookConfig>(Resources.Load<TextAsset>("jokeBook").text);
-    }
     public void OpenBook()
     {
         PurrfectAudioManager.Instance.FlipPage();
@@ -75,7 +74,7 @@ public class JokeBook : MonoBehaviour
 
     private string GetJokeText(int jokeNumber)
     {
-        var joke = _config.GetJokeConfig(jokeNumber).text
+        var joke = Config.GetJokeConfig(jokeNumber).text
             .Replace("\\n", "\n");
         return $"JOKE #{jokeNumber}:\n\n{joke}";
     }
