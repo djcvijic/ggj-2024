@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    private const int MinSeed = 100;
+    private const int MaxSeed = 999;
+
     [SerializeField] private Cat comedianCat;
     [SerializeField] private Cat whispererCat;
     public Button commedianButton;
@@ -51,16 +54,16 @@ public class MainMenuController : MonoBehaviour
 
     private void PlayCatButton(PlayerType playerType)
     {
-        if (playerType == PlayerType.Catmedian)
-            seedUI.Initialize(Random.Range(100, 1000).ToString(), playerType, () => LoadScene(playerType));
-        else if (playerType == PlayerType.CatWhisperer)
-            seedUI.Initialize("", playerType, () => LoadScene(playerType));
+        var seed = playerType == PlayerType.Catmedian
+            ? Random.Range(MinSeed, MaxSeed + 1).ToString()
+            : "";
+        seedUI.Initialize(seed, playerType, () => LoadScene(playerType));
     }
 
     private void LoadScene(PlayerType playerType)
     {
         var seedText = seedUI.GetSeed();
-        if (!int.TryParse(seedText, out var seed) || seed is < 100 or >= 1000)
+        if (!int.TryParse(seedText, out var seed) || seed is < MinSeed or > MaxSeed)
         {
             // TODO cvile: some fail alert for the player
             return;
