@@ -1,6 +1,6 @@
 using System;
 
-public class Util
+public static class Util
 {
     private static readonly Random Rng = new();
 
