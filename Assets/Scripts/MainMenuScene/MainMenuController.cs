@@ -1,7 +1,5 @@
 using RuleSystem;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
@@ -12,7 +10,7 @@ public class MainMenuController : MonoBehaviour
     public Button whispererButton;
     public Button commedianClickButton;
     public Button whispererClickButton;
-    public TMP_InputField seedInputField;
+    public SeedUI seedUI;
     public Button shareButton;
     public Button creditsButton;
     public Image shareQRImage;
@@ -24,25 +22,51 @@ public class MainMenuController : MonoBehaviour
     {
         comedianCat.Initialize();
         whispererCat.Initialize();
-        commedianButton.onClick.SetListener(() => LoadScene(PlayerType.Catmedian));
-        whispererButton.onClick.SetListener(() => LoadScene(PlayerType.CatWhisperer));
         commedianClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.Catmedian));
         whispererClickButton.onClick.SetListener(() => SwitchCatButton(PlayerType.CatWhisperer));
+        commedianButton.onClick.SetListener(() => PlayCatButton(PlayerType.Catmedian));
+        whispererButton.onClick.SetListener(() => PlayCatButton(PlayerType.CatWhisperer));
+        seedUI.Deactivate();
         shareButton.onClick.SetListener(() => OpenSharePopup());
         creditsButton.onClick.SetListener(() => OpenCreditsPopup());
 
         PurrfectAudioManager.Instance.StartMainMenuMusic();
     }
 
-    public void LoadScene(PlayerType playerType)
+    private void SwitchCatButton(PlayerType playerType)
     {
-        if (!int.TryParse(seedInputField.text, out var seed) || seed is < 100 or >= 1000)
+        if (playerType == PlayerType.Catmedian)
         {
-            seedInputField.text = "";
+            PurrfectAudioManager.Instance.SelectComedian();
+            commedianButton.gameObject.SetActive(true);
+            whispererButton.gameObject.SetActive(false);
+        }
+        else if (playerType == PlayerType.CatWhisperer)
+        {
+            PurrfectAudioManager.Instance.SelectWhisperer();
+            commedianButton.gameObject.SetActive(false);
+            whispererButton.gameObject.SetActive(true);
+        }
+    }
+
+    private void PlayCatButton(PlayerType playerType)
+    {
+        if (playerType == PlayerType.Catmedian)
+            seedUI.Initialize(Random.Range(100, 1000).ToString(), playerType, () => LoadScene(playerType));
+        else if (playerType == PlayerType.CatWhisperer)
+            seedUI.Initialize("", playerType, () => LoadScene(playerType));
+    }
+
+    private void LoadScene(PlayerType playerType)
+    {
+        var seedText = seedUI.GetSeed();
+        if (!int.TryParse(seedText, out var seed) || seed is < 100 or >= 1000)
+        {
+            // TODO cvile: some fail alert for the player
             return;
         }
 
-        RuleBook.Instance.Shuffle(seedInputField.text);
+        RuleBook.Instance.Shuffle(seedText);
         if (playerType == PlayerType.Catmedian)
         {
             PurrfectSceneManager.LoadScene(SceneName.ComedianScene);
@@ -50,28 +74,6 @@ public class MainMenuController : MonoBehaviour
         else if (playerType == PlayerType.CatWhisperer)
         {
             PurrfectSceneManager.LoadScene(SceneName.WhispererScene);
-        }
-    }
-
-    public void SwitchCatButton(PlayerType playerType)
-    {
-        if (playerType == PlayerType.Catmedian)
-        {
-            PurrfectAudioManager.Instance.SelectComedian();
-            commedianButton.gameObject.SetActive(true);
-            whispererButton.gameObject.SetActive(false);
-            seedInputField.gameObject.SetActive(true);
-            seedInputField.text = Random.Range(100, 1000).ToString();
-            seedInputField.readOnly = true;
-        }
-        else if (playerType == PlayerType.CatWhisperer)
-        {
-            PurrfectAudioManager.Instance.SelectWhisperer();
-            commedianButton.gameObject.SetActive(false);
-            whispererButton.gameObject.SetActive(true);
-            seedInputField.gameObject.SetActive(true);
-            seedInputField.text = "";
-            seedInputField.readOnly = false;
         }
     }
 
