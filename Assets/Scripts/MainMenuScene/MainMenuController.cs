@@ -30,8 +30,8 @@ public class MainMenuController : MonoBehaviour
         commedianButton.onClick.SetListener(() => PlayCatButton(PlayerType.Catmedian));
         whispererButton.onClick.SetListener(() => PlayCatButton(PlayerType.CatWhisperer));
         seedUI.Deactivate();
-        shareButton.onClick.SetListener(() => OpenSharePopup());
-        creditsButton.onClick.SetListener(() => OpenCreditsPopup());
+        shareButton.onClick.SetListener(ToggleSharePopup);
+        creditsButton.onClick.SetListener(ToggleCreditsPopup);
 
         PurrfectAudioManager.Instance.StartMainMenuMusic();
     }
@@ -80,11 +80,18 @@ public class MainMenuController : MonoBehaviour
         }
     }
 
-    private void OpenSharePopup()
+    private void ToggleSharePopup()
     {
-        PurrfectAudioManager.Instance.FlipPage();
-        shareQRImage.gameObject.SetActive(true);
-        closeShare.onClick.SetListener(() => CloseSharePopup());
+        if (!shareQRImage.gameObject.activeSelf)
+        {
+            PurrfectAudioManager.Instance.FlipPage();
+            shareQRImage.gameObject.SetActive(true);
+            closeShare.onClick.SetListener(CloseSharePopup);
+        }
+        else
+        {
+            CloseSharePopup();
+        }
     }
 
     private void CloseSharePopup()
@@ -93,12 +100,20 @@ public class MainMenuController : MonoBehaviour
         shareQRImage.gameObject.SetActive(false);
     }
 
-    private void OpenCreditsPopup()
+    private void ToggleCreditsPopup()
     {
-        PurrfectAudioManager.Instance.FlipPage();
-        creditsImage.gameObject.SetActive(true);
-        closeCredits.onClick.SetListener(() => CloseCreditsPopup());
+        if (!creditsImage.gameObject.activeSelf)
+        {
+            PurrfectAudioManager.Instance.FlipPage();
+            creditsImage.gameObject.SetActive(true);
+            closeCredits.onClick.SetListener(CloseCreditsPopup);
+        }
+        else
+        {
+            CloseCreditsPopup();
+        }
     }
+
     private void CloseCreditsPopup()
     {
         PurrfectAudioManager.Instance.FlipPage();
