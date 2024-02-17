@@ -55,6 +55,7 @@ public class MainMenuController : MonoBehaviour
 
     private void PlayCatButton(PlayerType playerType)
     {
+        PurrfectAudioManager.Instance.ClickButton();
         var seed = playerType == PlayerType.Catmedian
             ? Random.Range(MinSeed, MaxSeed + 1).ToString()
             : "";
@@ -63,6 +64,7 @@ public class MainMenuController : MonoBehaviour
 
     private void LoadScene(PlayerType playerType)
     {
+        PurrfectAudioManager.Instance.ClickButton();
         var seedText = seedPopup.GetSeed();
         if (!int.TryParse(seedText, out var seed) || seed is < MinSeed or > MaxSeed)
         {

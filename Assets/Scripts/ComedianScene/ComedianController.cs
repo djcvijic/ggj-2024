@@ -39,8 +39,8 @@ public class ComedianController : MonoBehaviour
 
     private void Start()
     {
-        exitButton.onClick.SetListener(AreYouSure);
-        gameEndButton.onClick.SetListener(BackToMainMenu);
+        exitButton.onClick.SetListener(OnExitButton);
+        gameEndButton.onClick.SetListener(OnExitButton);
         jokeBookButton.onClick.SetListener(jokeBook.OpenBook);
         StartNewDay(startCatCount);
 
@@ -50,8 +50,15 @@ public class ComedianController : MonoBehaviour
         alert.Close();
     }
 
-    private void AreYouSure()
+    private void OnExitButton()
     {
+        if (_isGameOver)
+        {
+            BackToMainMenu();
+            return;
+        }
+
+        PurrfectAudioManager.Instance.ClickButton();
         _timePaused = true;
         alert.Open("Back to main menu? You will lose your progress!", confirm =>
         {
@@ -67,6 +74,7 @@ public class ComedianController : MonoBehaviour
 
     private void OnJokeTold(int jokeNumber)
     {
+        PurrfectAudioManager.Instance.ClickButton();
         var isCorrect = RuleBook.Instance.GetCorrectJoke() == jokeNumber;
         if (isCorrect) WinDay();
         else LoseDay();
@@ -74,6 +82,7 @@ public class ComedianController : MonoBehaviour
 
     private static void BackToMainMenu()
     {
+        PurrfectAudioManager.Instance.ClickButton();
         PurrfectSceneManager.LoadScene(SceneName.MainMenuScene);
     }
 

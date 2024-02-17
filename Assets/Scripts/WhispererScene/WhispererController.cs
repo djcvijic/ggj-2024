@@ -148,6 +148,7 @@ public class WhispererController : MonoBehaviour
 
     private void BackToMainMenu()
     {
+        PurrfectAudioManager.Instance.ClickButton();
         PurrfectSceneManager.LoadScene(SceneName.MainMenuScene);
     }
 }
